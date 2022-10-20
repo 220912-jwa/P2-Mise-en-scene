@@ -1,4 +1,4 @@
-# P2-Mise-Mise-en-scene
+# P2-Mise-en-scene
 
 “Mise I’ve Seen” 
 
