@@ -6,6 +6,7 @@ public class UserDAO {
 
     public User createUser(User user) {
     }//creates a new user in user table
+    //needs to use ID-less constructor, and setID afterwards
 
 
     public User getUserByUsername(String username) {
