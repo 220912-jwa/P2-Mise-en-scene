@@ -42,7 +42,5 @@ public void positiveLogin(){
     User rightCombo =as.login(mockRightCombo.getUsername(),mockRightCombo.getPass());
     assertNotNull(rightCombo);
 }
-@Test
-    public void wrongPass(){}
 
 }
