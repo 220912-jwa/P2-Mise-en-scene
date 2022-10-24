@@ -1,5 +1,5 @@
 Feature: Account Creation
-  Scenario: Account Creation
+  Scenario: MIS-22 Account Creation
     Given the user is on the login page
     When the user clicks the "Create Account" button
     When the user inputs "newAccount" into the username field

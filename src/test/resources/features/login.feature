@@ -1,5 +1,5 @@
 Feature: Login
-  Scenario Outline: Login with Correct Credentials
+  Scenario Outline: MIS-20 Login with Correct Credentials
     Given the user is on the login page
     When the user inputs "<username>" into the username field
     When the user inputs "<pass>" into the password field
