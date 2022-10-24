@@ -1,13 +1,16 @@
 Feature: Login
   Scenario Outline: MIS-20 Login with Correct Credentials
     Given the user is on the login page
-    When the user inputs "<username>" into the username field
-    When the user inputs "<pass>" into the password field
+    When the user inputs "<Username>" into the username field
+    When the user inputs "<Password>" into the password field
     When the user clicks the login button
     Then the user should be on their "Library View" page
     Examples:
-      |Username  | Password |
-      |griffy    | hunter2  |
+      | Username      | Password            |
+      | griffy        | hunter2             |
+      | sahraee       | pass2pass           |
+      | asaah         | passwordsareawesome |
+      | andrewwashere | coolerbeans         |
 
 
   Scenario: Incorrect Login, Valid Username
