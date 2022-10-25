@@ -6,21 +6,20 @@ import dev.mis.util.ConnectionUtil;
 import java.sql.*;
 
 public class MovieDAO {
-<<<<<<< HEAD
+
     public Movie createMovie(){
         // Should include a way to generate an integer id
     }
     public Movie getMovieById(String movieID){}
     //should check DB first, and catch SQL exception by sending movieID prefaced with "tt" to OMDB API
-    public boolean updateMovie(Movie movie){}
 
     public boolean deleteMovie(String movieID){}
-=======
+
     public Movie createMovie(Movie movie){
         try(Connection conn = ConnectionUtil.createConnection()){
             String sql = "insert into mis.movies values (?, ?, ?, ?, ?)";
             PreparedStatement ps =conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1,movie.getMovieID());
+            ps.setString(1,movie.getMovieID());
             //needs to be generated on service layer
             ps.setString(2,movie.getTitle());
             ps.setFloat(3,movie.getRating());
@@ -41,31 +40,7 @@ public class MovieDAO {
 
         }
     }
-    public Movie getMovieById(String movieID){
-        try(Connection conn = ConnectionUtil.createConnection()){
-        String sql = "select * from mis.movies where movie_id=?";
-        PreparedStatement ps =conn.prepareStatement(sql);
-        ps.setString(1,movieID);
-        ResultSet rs =ps.executeQuery();
-        if(rs.next()){
-            Movie movie = new Movie(
-                    rs.getString("movie_id"),
-                    rs.getString("title"),
-                    rs.getFloat("IMDB_rating"),
-                    rs.getString("original_language"),
-                    rs.getInt("release_year")
-            );
-            return movie;
-        }else{
-            return null;
-        }
 
-    }
-    catch (SQLException e){
-        e.printStackTrace();
-        return null;
-
-    }}
     //should check DB first, and catch SQL exception by sending movieID prefaced with "tt" to OMDB API
     public boolean updateMovie(Movie movie){
         try(Connection conn = ConnectionUtil.createConnection()){
@@ -103,5 +78,4 @@ public class MovieDAO {
             return false;
         }
     }
->>>>>>> c4b82f308d97c8209e059b6f40a38fa4134eba12
 }
