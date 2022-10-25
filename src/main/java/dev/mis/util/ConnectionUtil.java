@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionUtil {
+
     public static Connection createConnection(){
         try{
             return DriverManager.getConnection(String.format(
