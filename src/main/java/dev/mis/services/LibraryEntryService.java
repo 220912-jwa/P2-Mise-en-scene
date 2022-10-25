@@ -23,11 +23,11 @@ public class LibraryEntryService {
         // takes userCode, finds userId, then retrieves all library entries
     }
 
-    public void editLibraryEntry(int userId, int movieId){
+    public void editLibraryEntry(int userId, String movieId){
 
     }
 
-    public void deleteLibraryEntry(int userId, int movieId){
+    public void deleteLibraryEntry(int userId, String movieId){
 
     }
 }
