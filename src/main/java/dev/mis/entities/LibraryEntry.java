@@ -1,6 +1,6 @@
 package dev.mis.entities;
 
-public class MovieForUser {
+public class LibraryEntry {
     public int userID;
     public int movieID;
     public String userComments;
@@ -8,9 +8,9 @@ public class MovieForUser {
     public boolean isFavorite;
     public boolean hasWatched;
 
-    public MovieForUser(){}
+    public LibraryEntry(){}
 
-    public MovieForUser(int userID, int movieID, String userComments, float userRating, boolean isFavorite, boolean hasWatched) {
+    public LibraryEntry(int userID, int movieID, String userComments, float userRating, boolean isFavorite, boolean hasWatched) {
         this.userID = userID;
         this.movieID = movieID;
         this.userComments = userComments;

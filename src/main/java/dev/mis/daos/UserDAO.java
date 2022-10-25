@@ -5,9 +5,10 @@ import dev.mis.entities.User;
 public class UserDAO {
 
     public User createUser(User user) {
-    }//creates a new user in user table
-    //needs to use ID-less constructor, and setID afterwards
-
+        //creates a new user in user table
+        // needs to use ID-less constructor, and setID afterwards
+        // also needs to generate a user code
+    }
 
     public User getUserByUsername(String username) {
     }//used for login
