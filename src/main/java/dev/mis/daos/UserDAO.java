@@ -1,6 +1,14 @@
 package dev.mis.daos;
 
 import dev.mis.entities.User;
+import dev.mis.util.ConnectionUtil;
+import net.bytebuddy.dynamic.scaffold.MethodRegistry;
+
+import java.sql.Connection;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserDAO {
 
@@ -11,6 +19,25 @@ public class UserDAO {
     }
 
     public User getUserByUsername(String username) {
+
+        String sql = "SELECT username, pass, user_code FROM mis.users WHERE username = ?";
+
+        try (Connection connection = ConnectionUtil.createConnection()) {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()){
+                return new User(
+                  rs.getString("username"),
+                  rs.getString("pass"),
+                  rs.getString("user_code")
+                );
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return null;
     }//used for login
 
     public User getUserByUserCode(String userCode) {
