@@ -26,7 +26,7 @@ public class AppRunner {
         LibraryEntryService ls = new LibraryEntryService(userDAO,movieDAO);
         AuthenticationService as = new AuthenticationService(userDAO);
 
-        UserController uc = new UserController(us);
+        UserController uc = new UserController(as);
         MovieController mc = new MovieController(ms);
         LibraryEntryController lc = new LibraryEntryController(ls);
         AuthenticationController ac = new AuthenticationController(as);
@@ -38,6 +38,9 @@ public class AppRunner {
         //starts app on localhost
 
         mis.routes(()->{
+            path("/authenticate", () -> {
+                post(ac.login);
+            });
             path("/{user_id}", () -> {
                 delete(uc::deleteUser);
                 //user controller method endpoints go here
@@ -57,7 +60,11 @@ public class AppRunner {
             });
         });
 
-
+        mis.get("/getSession", ctx -> {
+            if (ctx.sessionAttribute("loggedInUser") != null ){
+                ctx.json(ctx.sessionAttribute("loggedInUser"));
+            }
+        });//session manager
 
 
 
