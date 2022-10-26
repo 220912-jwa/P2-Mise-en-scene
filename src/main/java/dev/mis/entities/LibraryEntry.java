@@ -2,7 +2,7 @@ package dev.mis.entities;
 
 public class LibraryEntry {
     public int userID;
-    public String movieID;
+    public int movieID;
     public String userComments;
     public float userRating;
     public boolean isFavorite;
@@ -10,7 +10,7 @@ public class LibraryEntry {
 
     public LibraryEntry(){}
 
-    public LibraryEntry(int userID, String movieID, String userComments, float userRating, boolean isFavorite, boolean hasWatched) {
+    public LibraryEntry(int userID, int movieID, String userComments, float userRating, boolean isFavorite, boolean hasWatched) {
         this.userID = userID;
         this.movieID = movieID;
         this.userComments = userComments;
@@ -27,11 +27,11 @@ public class LibraryEntry {
         this.userID = userID;
     }
 
-    public String getMovieID() {
+    public int getMovieID() {
         return movieID;
     }
 
-    public void setMovieID(String movieID) {
+    public void setMovieID(int movieID) {
         this.movieID = movieID;
     }
 

@@ -1,7 +1,7 @@
 package dev.mis.entities;
 
 public class Movie {
-    public String movieID;
+    public int movieID;
     //tt<movieID>, the movie ID comes after the tt
     public String title;
     public float rating; //IMDB or RT?
@@ -11,7 +11,7 @@ public class Movie {
     public Movie(){}
 
 
-    public Movie(String movieID, String title, float rating, String language, int releaseYear) {
+    public Movie(int movieID, String title, float rating, String language, int releaseYear) {
         this.movieID = movieID;
         this.title = title;
         this.rating = rating;
@@ -26,11 +26,11 @@ public class Movie {
         this.releaseYear = releaseYear;
     }//for manual generation, no movieID
 
-    public String getMovieID() {
+    public int getMovieID() {
         return movieID;
     }
 
-    public void setMovieID(String movieID) {
+    public void setMovieID(int movieID) {
         this.movieID = movieID;
     }
 
