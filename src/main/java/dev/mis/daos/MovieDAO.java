@@ -6,7 +6,6 @@ import dev.mis.util.ConnectionUtil;
 import java.sql.*;
 
 public class MovieDAO {
-
     public Movie createMovie(Movie movie){
         try(Connection conn = ConnectionUtil.createConnection()){
             String sql = "insert into mis.movies values (?, ?, ?, ?, ?)";
@@ -32,15 +31,15 @@ public class MovieDAO {
 
         }
     }
-    public Movie getMovieById(String movieID){
+    public Movie getMovieById(int movieID){
         try(Connection conn = ConnectionUtil.createConnection()){
         String sql = "select * from mis.movies where movie_id=?";
         PreparedStatement ps =conn.prepareStatement(sql);
-        ps.setString(1,movieID);
+        ps.setInt(1,movieID);
         ResultSet rs =ps.executeQuery();
         if(rs.next()){
             Movie movie = new Movie(
-                    rs.getString("movie_id"),
+                    rs.getInt("movie_id"),
                     rs.getString("title"),
                     rs.getFloat("IMDB_rating"),
                     rs.getString("original_language"),
@@ -66,7 +65,7 @@ public class MovieDAO {
             ps.setFloat(2, movie.getRating());
             ps.setString(3,movie.getLanguage());
             ps.setInt(4,movie.getReleaseYear());
-            ps.setString(5,movie.getMovieID());
+            ps.setInt(5,movie.getMovieID());
             int rowCount = ps.executeUpdate();
             if (rowCount==1){
                 return true;
@@ -78,11 +77,11 @@ public class MovieDAO {
         }
     }
 
-    public boolean deleteMovie(String movieID){
+    public boolean deleteMovie(int movieID){
         try (Connection connection = ConnectionUtil.createConnection()) {
             String sql = "delete from mis.movies where movie_id = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, movieID);
+            ps.setInt(1, movieID);
             int rowCount = ps.executeUpdate();
             if (rowCount == 1) {
                 return true;
