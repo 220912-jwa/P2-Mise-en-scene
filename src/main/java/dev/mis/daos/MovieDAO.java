@@ -93,4 +93,8 @@ public class MovieDAO {
             return false;
         }
     }
+
+    public MovieDAO getById(int id) {
+        return null;
+    }
 }
