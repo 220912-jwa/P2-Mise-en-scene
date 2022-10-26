@@ -27,12 +27,12 @@ public class LibraryEntryServiceUnitTests {
     }
 
     @Test
-    public void testCreateEntry(){
-        
+    public void createEntry(){
+
     }
 
     @Test
-    public void testDeleteEntry(){
+    public void deleteEntry(){
 
     }
 

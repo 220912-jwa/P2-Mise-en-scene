@@ -7,19 +7,19 @@ import dev.mis.entities.User;
 import java.util.List;
 
 public class LibraryEntryDAO {
-    public LibraryEntry createLibraryEntry(int userId, String movieId){
+    public LibraryEntry createLibraryEntry(int userId, int movieId){
 
     }
 
-    public boolean updateLibraryEntry(int userId, String movieId){
+    public boolean updateLibraryEntry(int userId, int movieId){
 
     }
 
-    public boolean deleteLibraryEntry(int userId, String movieId){
+    public boolean deleteLibraryEntry(int userId, int movieId){
 
     }
 
-    public List<LibraryEntry> getUserEntriesByCode(String userCode){
+    public List<LibraryEntry> getUserEntriesByCode(int userCode){
 
     }
 }
