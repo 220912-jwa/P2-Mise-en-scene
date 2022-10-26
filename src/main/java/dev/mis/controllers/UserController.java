@@ -13,7 +13,7 @@ public class UserController {
 }
     public void getMovieById(Context ctx) {
 
-    int Id = Integer.parseInt(ctx.pathParam("id"));
+    int Id = Integer.parseInt(ctx.pathParam("movie_id"));
     Movie mv = userService.getMovieById(movieID);
 
     if (mv != null) {
@@ -51,7 +51,7 @@ public class UserController {
         ctx.status(HttpCode.NO_CONTENT);
     }
     public void deleteUser(Context ctx) {
-        int userId = Integer.parseInt(ctx.pathParam("id"));
+        int userId = Integer.parseInt(ctx.pathParam("user_id"));
         userService.deleteUser(userId);
     }
 
