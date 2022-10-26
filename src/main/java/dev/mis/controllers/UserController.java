@@ -2,25 +2,18 @@ package dev.mis.controllers;
 
 import dev.mis.entities.User;
 import dev.mis.services.AuthenticationService;
+import dev.mis.services.UserService;
 import io.javalin.http.Handler;
 
 public class UserController {
 
-    private AuthenticationService userAuthentication;
+    private UserService us;
 
-    public UserController(AuthenticationService userAuthentication){
-        this.userAuthentication = userAuthentication;
+    public UserController(UserService us){
+        this.us = us;
     }
 
-    public Handler login = ctx -> {
-        User u = ctx.bodyAsClass(User.class);
-        User authenticatedU = userAuthentication.userLogin(u.getUsername(), u.getPass());
-        ctx.sessionAttribute("loggedInUser", authenticatedU);
-        if (authenticatedU != null){
-            ctx.status(200);
-            ctx.json(authenticatedU);
-        }
-    }
+
 
 
 }

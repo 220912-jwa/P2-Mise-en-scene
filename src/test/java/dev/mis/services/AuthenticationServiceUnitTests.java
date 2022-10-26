@@ -39,7 +39,7 @@ public void mockObjects(){
 @Test
 public void positiveLogin(){
     when(userDAO.getUserByUsername(mockRightCombo.getUsername())).thenReturn(mockRightCombo);
-    User rightCombo =as.login(mockRightCombo.getUsername(),mockRightCombo.getPass());
+    User rightCombo =as.userLogin(mockRightCombo.getUsername(),mockRightCombo.getPass());
     assertNotNull(rightCombo);
 }
 
