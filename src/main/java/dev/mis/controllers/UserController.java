@@ -20,7 +20,7 @@ public class UserController {
             ctx.status(200);
             ctx.json(authenticatedU);
         }
-    }
+    };
 
 
 }
