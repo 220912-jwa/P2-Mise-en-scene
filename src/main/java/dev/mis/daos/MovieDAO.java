@@ -11,7 +11,7 @@ public class MovieDAO {
         try(Connection conn = ConnectionUtil.createConnection()){
             String sql = "insert into mis.movies values (?, ?, ?, ?, ?)";
             PreparedStatement ps =conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1,movie.getMovieID());
+            ps.setString(1,movie.getMovieID());
             //needs to be generated on service layer
             ps.setString(2,movie.getTitle());
             ps.setFloat(3,movie.getRating());
