@@ -39,5 +39,3 @@ public class UserService {
         userDAO.deleteUser(userId);
     }
 }
-
-
