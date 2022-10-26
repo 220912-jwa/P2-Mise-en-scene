@@ -1,5 +1,6 @@
 package dev.mis;
 
+import dev.mis.controllers.AuthenticationController;
 import dev.mis.controllers.UserController;
 import dev.mis.daos.LibraryEntryDAO;
 import dev.mis.daos.MovieDAO;
@@ -21,7 +22,7 @@ public class AppRunner {
         MovieDAO movieDAO = new MovieDAO();
         LibraryEntryDAO libraryEntryDAO = new LibraryEntryDAO();
 
-        UserService us = new UserService(userDAO);
+        UserService us = new UserService(userDAO, movieDAO);
         MovieService ms = new MovieService(movieDAO);
         LibraryEntryService ls = new LibraryEntryService(userDAO,movieDAO);
         AuthenticationService as = new AuthenticationService(userDAO);

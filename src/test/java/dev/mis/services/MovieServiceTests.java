@@ -29,7 +29,7 @@ public class MovieServiceTests {
     @BeforeAll
     public static void setup(){
         mockMovieDAO = new MovieDAO();
-        ms = new MovieService();
+        ms = new MovieService(mockMovieDAO);
     }
 
     @BeforeEach
@@ -39,15 +39,15 @@ public class MovieServiceTests {
 
     @Test
     public void testCreateMovie(){
-        when(mockMovieDAO.createMovie()).thenReturn(mockMovieEntity);
+        when(mockMovieDAO.createMovie(mockMovieEntity)).thenReturn(mockMovieEntity);
         Movie newMovie = ms.createMovie(mockMovieEntity);
         assertNotNull(newMovie);
     }
 
     @Test
     public void testGetMovieByID(){
-        when(mockMovieDAO.getMovieById(108255)).thenReturn(mockMovieEntity);
-        Movie gottenMovie = ms.getMovieByID(108255);
+        when(mockMovieDAO.getMovieById("tt10823255")).thenReturn(mockMovieEntity);
+        Movie gottenMovie = ms.searchMovieById("tt10823255");
         assertNotNull(gottenMovie);
     }
 
@@ -60,8 +60,8 @@ public class MovieServiceTests {
 
     @Test
     public void testDeleteMovie(){
-        when(mockMovieDAO.deleteMovie(0108255)).thenReturn(true);
-        boolean deletedMovie = ms.deleteMovie(108255);
+        when(mockMovieDAO.deleteMovie("tt01082555")).thenReturn(true);
+        boolean deletedMovie = ms.deleteMovie("tt01082555");
         assertTrue(deletedMovie);
     }
 }
