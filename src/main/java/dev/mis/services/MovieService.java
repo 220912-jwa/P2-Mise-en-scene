@@ -3,7 +3,9 @@ package dev.mis.services;
 import dev.mis.daos.MovieDAO;
 import dev.mis.entities.Movie;
 
+
 import java.sql.SQLException;
+
 
 
 public class MovieService {
@@ -27,6 +29,7 @@ public class MovieService {
             return movie;
 
         }
+
     //this is the Dynamic Search mentioned in business requirements
 }
 }
