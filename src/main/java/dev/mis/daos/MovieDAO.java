@@ -31,15 +31,15 @@ public class MovieDAO {
 
         }
     }
-    public Movie getMovieById(int movieID){
+    public Movie getMovieById(String movieID){
         try(Connection conn = ConnectionUtil.createConnection()){
         String sql = "select * from mis.movies where movie_id=?";
         PreparedStatement ps =conn.prepareStatement(sql);
-        ps.setInt(1,movieID);
+        ps.setString(1,movieID);
         ResultSet rs =ps.executeQuery();
         if(rs.next()){
             Movie movie = new Movie(
-                    rs.getInt("movie_id"),
+                    rs.getString("movie_id"),
                     rs.getString("title"),
                     rs.getFloat("IMDB_rating"),
                     rs.getString("original_language"),
@@ -65,7 +65,7 @@ public class MovieDAO {
             ps.setFloat(2, movie.getRating());
             ps.setString(3,movie.getLanguage());
             ps.setInt(4,movie.getReleaseYear());
-            ps.setInt(5,movie.getMovieID());
+            ps.setString(5,movie.getMovieID());
             int rowCount = ps.executeUpdate();
             if (rowCount==1){
                 return true;
@@ -77,11 +77,11 @@ public class MovieDAO {
         }
     }
 
-    public boolean deleteMovie(int movieID){
+    public boolean deleteMovie(String movieID){
         try (Connection connection = ConnectionUtil.createConnection()) {
             String sql = "delete from mis.movies where movie_id = ?";
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, movieID);
+            ps.setString(1, movieID);
             int rowCount = ps.executeUpdate();
             if (rowCount == 1) {
                 return true;
