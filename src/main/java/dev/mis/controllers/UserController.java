@@ -1,5 +1,6 @@
 package dev.mis.controllers;
 
+<<<<<<< HEAD
 import dev.mis.entities.User;
 import dev.mis.services.AuthenticationService;
 import dev.mis.services.UserService;
@@ -16,4 +17,7 @@ public class UserController {
 
 
 
+=======
+public class UserController {
+>>>>>>> main
 }
