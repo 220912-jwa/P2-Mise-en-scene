@@ -2,48 +2,48 @@ package dev.mis.entities;
 
 public class OMovie {
 
-private String oMovieID;
-private String oMovieTitle;
-private int oMovieReleaseYear;
+private String imdbID;
+private String Title;
+private int Year;
 
 public OMovie(){}
 
-public OMovie(String oMovieID, String oMovieTitle, int oMovieReleaseYear){
-    this.oMovieID = oMovieID;
-    this.oMovieTitle = oMovieTitle;
-    this.oMovieReleaseYear = oMovieReleaseYear;
+public OMovie(String imdbID, String Title, int Year){
+    this.imdbID = imdbID;
+    this.Title = Title;
+    this.Year = Year;
 }
 
-    public String getoMovieID() {
-        return oMovieID;
+    public String getImdbID() {
+        return imdbID;
     }
 
-    public void setoMovieID(String oMovieID) {
-        this.oMovieID = oMovieID;
+    public void setImdbID(String imdbID) {
+        this.imdbID = imdbID;
     }
 
-    public String getoMovieTitle() {
-        return oMovieTitle;
+    public String getTitle() {
+        return Title;
     }
 
-    public void setoMovieTitle(String oMovieTitle) {
-        this.oMovieTitle = oMovieTitle;
+    public void setTitle(String title) {
+        this.Title = title;
     }
 
-    public int getoMovieReleaseYear() {
-        return oMovieReleaseYear;
+    public int getYear() {
+        return Year;
     }
 
-    public void setoMovieReleaseYear(int oMovieReleaseYear) {
-        this.oMovieReleaseYear = oMovieReleaseYear;
+    public void setYear(int year) {
+        this.Year = year;
     }
 
     @Override
     public String toString() {
         return "OMovie{" +
-                "oMovieID='" + oMovieID + '\'' +
-                ", oMovieTitle='" + oMovieTitle + '\'' +
-                ", oMovieReleaseYear=" + oMovieReleaseYear +
+                "imdbID='" + imdbID + '\'' +
+                ", Title='" + Title + '\'' +
+                ", Year=" + Year +
                 '}';
     }
 }
