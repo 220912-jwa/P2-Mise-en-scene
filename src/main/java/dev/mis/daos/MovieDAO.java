@@ -15,7 +15,7 @@ public class MovieDAO {
             ps.setString(2,movie.getTitle());
             ps.setFloat(3,movie.getRating());
             ps.setString(4,movie.getLanguage());
-            ps.setInt(5,movie.getReleaseYear());
+            ps.setInt(5,movie.getYear());
             ps.execute();
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
@@ -64,7 +64,7 @@ public class MovieDAO {
             ps.setString(1,movie.getTitle());
             ps.setFloat(2, movie.getRating());
             ps.setString(3,movie.getLanguage());
-            ps.setInt(4,movie.getReleaseYear());
+            ps.setInt(4,movie.getYear());
             ps.setString(5,movie.getMovieID());
             int rowCount = ps.executeUpdate();
             if (rowCount==1){
