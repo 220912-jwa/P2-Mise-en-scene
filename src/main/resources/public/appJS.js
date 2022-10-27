@@ -4,6 +4,18 @@
 
 let baseURL = "http://localhost:8080";
 
+function wrongPasswordAlert(){
+    alert("Invalid Password");
+}
+
+function noUserFoundAlert(){
+    confirm("Invalid Username. Would you like to create a new account?");
+}
+
+function noUserFoundAlertRedirect(){
+    document.location.assign("./register.html");
+}
+
 async function userLogin(){
 
     uName = document.getElementById('userName').value;
@@ -29,7 +41,6 @@ async function userLogin(){
         sessionStorage.setItem('userName', loggedInUser.username);
         document.location.assign("./library.html");
     }
-
 }
 
 let name = sessionStorage.getItem("userName");

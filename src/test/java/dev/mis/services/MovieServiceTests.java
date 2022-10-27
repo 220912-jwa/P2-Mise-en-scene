@@ -1,5 +1,6 @@
 package dev.mis.services;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import dev.mis.daos.MovieDAO;
 import dev.mis.services.MovieService;
 import dev.mis.entities.Movie;
@@ -10,6 +11,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -45,7 +48,7 @@ public class MovieServiceTests {
     }
 
     @Test
-    public void testGetMovieByID(){
+    public void testGetMovieByID() throws ExecutionException, InterruptedException, JsonProcessingException {
         when(mockMovieDAO.getMovieById("tt10823255")).thenReturn(mockMovieEntity);
         Movie gottenMovie = ms.searchMovieById("tt10823255");
         assertNotNull(gottenMovie);
