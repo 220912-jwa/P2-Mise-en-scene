@@ -6,7 +6,7 @@ public class Movie {
     public String title;
     public float rating; //IMDB or RT?
     public String language;
-    public int year;
+    public int releaseYear;
 
     public Movie(){}
 
@@ -16,14 +16,14 @@ public class Movie {
         this.title = title;
         this.rating = rating;
         this.language = language;
-        this.year = year;
+        this.releaseYear = year;
     }//no user inputs
 
     public Movie(String title, float rating, String language, int year) {
         this.title = title;
         this.rating = rating;
         this.language = language;
-        this.year = year;
+        this.releaseYear = year;
     }//for manual generation, no movieID
 
     public String getMovieID() {
@@ -58,12 +58,12 @@ public class Movie {
         this.language = language;
     }
 
-    public int getYear() {
-        return year;
+    public int getReleaseYear() {
+        return releaseYear;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setReleaseYear(int year) {
+        this.releaseYear = year;
     }
 
 
@@ -75,7 +75,7 @@ public class Movie {
                 ", title='" + title + '\'' +
                 ", rating=" + rating +
                 ", language='" + language + '\'' +
-                ", releaseYear=" + year +
+                ", releaseYear=" + releaseYear +
                 '}';
     }
 }
