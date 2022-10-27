@@ -1,0 +1,38 @@
+until DB is up and running, here are the sql queries I used to set up DB; so you can reference variable names etc.
+
+
+
+create table mis.users(
+user_id serial primary key,
+username varchar(20) unique not null,
+pass varchar(20),
+user_code varchar unique not null
+);
+
+
+
+create table mis.movies(
+movie_id varchar primary key,
+title varchar not null,
+IMBD_rating float,
+original_language varchar,
+release_year int
+);
+
+
+
+
+create table mis.user_library(
+user_id int not null,
+movie_id varchar not null,
+user_comments varchar,
+user_rating float,
+is_favorite bool,
+has_watched bool,
+constraint pk_user_library primary key (user_id, movie_id),
+foreign key (user_id) references mis.users (user_id),
+foreign key (movie_id) references mis.movies (movie_id)
+
+
+
+);
