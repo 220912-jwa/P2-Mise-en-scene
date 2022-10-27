@@ -76,7 +76,7 @@ async function userLogin(){
         }
     );
 
-    if (res.status===200){
+    if (resBody.status===200){
         let loggedInUser = await resBody.json();
         sessionStorage.setItem('userName', loggedInUser.username);
         sessionStorage.setItem("userID",loggedInUser.userID);
