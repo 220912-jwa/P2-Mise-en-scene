@@ -5,13 +5,27 @@
     <link rel="stylesheet" href="appCSS.css">
     <script src="appJS.js"></script>
 </head>
-<body>
+<body onload="loadLibrary()">
     <div id="libraryRootDiv">
         <fieldset id="genericFieldset">
             <h1>Library View</h1>
-            <button id="addMovieButton" type="button" class="allButtons">add movie</button>
+            <button id="addMovieButton" type="button" class="allButtons" onclick="document.location.assign('./add.html')">Add Movie</button>
             <br /><br />
         </fieldset>
     </div>
+    <div><table id="library">
+        <thead>
+            <th>Title</th>
+            <th>Release Year</th>
+            <th>Watched?</th>
+            <th>Favorite</th>
+            <th>Rate it!</th>
+            <th>Review/Comments</th>
+            <th>Save Changes</th>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table></div>
 </body>
 </html>
