@@ -41,7 +41,7 @@ public class MovieDAO {
             Movie movie = new Movie(
                     rs.getString("movie_id"),
                     rs.getString("title"),
-                    rs.getFloat("IMDB_rating"),
+                    rs.getFloat("imdb_rating"),
                     rs.getString("original_language"),
                     rs.getInt("release_year")
             );
