@@ -11,19 +11,19 @@ public class Movie {
     public Movie(){}
 
 
-    public Movie(String movieID, String title, float rating, String language, int releaseYear) {
+    public Movie(String movieID, String title, float rating, String language, int year) {
         this.movieID = movieID;
         this.title = title;
         this.rating = rating;
         this.language = language;
-        this.releaseYear = releaseYear;
+        this.releaseYear = year;
     }//no user inputs
 
-    public Movie(String title, float rating, String language, int releaseYear) {
+    public Movie(String title, float rating, String language, int year) {
         this.title = title;
         this.rating = rating;
         this.language = language;
-        this.releaseYear = releaseYear;
+        this.releaseYear = year;
     }//for manual generation, no movieID
 
     public String getMovieID() {
@@ -62,8 +62,8 @@ public class Movie {
         return releaseYear;
     }
 
-    public void setReleaseYear(int releaseYear) {
-        this.releaseYear = releaseYear;
+    public void setReleaseYear(int year) {
+        this.releaseYear = year;
     }
 
 
