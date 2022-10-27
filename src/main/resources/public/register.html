@@ -3,21 +3,58 @@
 <head>
     <title>Register</title>
     <link rel="stylesheet" href="appCSS.css">
-    <script src="appJS.js"></script>
+   
 </head>
 <body>
+    <div id="error"></div>
     <div id="registerRootDiv">
         <fieldset id="genericFieldset">
             <h1>Register</h1>
             <label for="newUserName" class="goldBoldFont">choose a username</label>
-            <input id="newUserName" type="text" placeholder="your username">
+            <input id="newUserName" type="text" placeholder="your username" required>
             <br /><br />
             <label for="newUserPass" class="goldBoldFont">choose a password</label>
-            <input id="newUserPass" type="text" placeholder="your password">
+            <input id="newUserPass" type="text" placeholder="your password" required>
             <br /><br />
             <button id="newUserRegisterButton" type="button" class="allButtons">register</button>
             <br /><br />
         </fieldset>
     </div>
+    <script>
+let baseURL = "http://localhost:8080";
+
+async function Registration(){
+
+    name = document.getElementById('newUserName').value;
+    pass = document.getElementById('newUserPass').value;
+
+    let registrationCredentials = {
+        newUserName: name,
+        newUserPass: pass,
+    
+
+            method: 'POST',
+            header: {'Content-Type': 'application/json'},
+            body: JSON.stringify({newUserName, newUserPass})
+        }
+        
+    registrationJSON = JSON.stringify(newUserName, newUserPass);
+        let resBody = await fetch(
+        `${baseURL}/register`,
+        
+    );
+
+    if (res.status===200){
+        let resBody = await res.json();
+       
+        document.location.assign("./index.html");
+
+    
+    }
+
+
+}
+
+    </script>
 </body>
 </html>
