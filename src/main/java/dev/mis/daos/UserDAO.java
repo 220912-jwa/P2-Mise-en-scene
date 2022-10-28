@@ -42,8 +42,8 @@ public class UserDAO {
 
             String sql = "select * from  mis.users where username = ?";
 
-            PreparedStatement ps =conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(2,username);
+            PreparedStatement ps =conn.prepareStatement(sql);
+            ps.setString(1,username);
             ResultSet rs =ps.executeQuery();
             if(rs.next()){
                 User user = new User(

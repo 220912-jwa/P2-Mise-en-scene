@@ -51,15 +51,15 @@ public class AppRunner {
                     //library entry service methods go here
                 });
             });
-            /*path("/movies",() -> {
+            path("/movies",() -> {
                 post(mc::createMovie);
                 //movie id put last to avoid confusion even though there is no overlap between movie and user IDs
                 path("/{movie_id}", ()->{
-                    get(mc::getMovieById);
+                    get(mc::searchMovieById);
                     delete(mc::deleteMovie);
                     put(mc::updateMovie);
                 });
-            });*/
+            });
         });
 
         mis.get("/getSession", ctx -> {

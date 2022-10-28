@@ -44,7 +44,7 @@ public class LibraryEntryServiceUnitTests {
     @Test
     public void testCreateEntry(){
 
-        when(mockLibraryEntryDAO.createLibraryEntry(mockLibraryEntryEntity))
+        //when(mockLibraryEntryDAO.createLibraryEntry(mockLibraryEntryEntity))
     }
 
     public void testAddEntry(){
