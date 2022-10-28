@@ -1,6 +1,7 @@
 package dev.mis;
 
 import dev.mis.controllers.AuthenticationController;
+import dev.mis.controllers.LibraryEntryController;
 import dev.mis.controllers.MovieController;
 import dev.mis.controllers.UserController;
 import dev.mis.daos.LibraryEntryDAO;
@@ -30,7 +31,7 @@ public class AppRunner {
 
         UserController uc = new UserController(us);
         MovieController mc = new MovieController(ms);
-        //LibraryEntryController lc = new LibraryEntryController(ls);
+        LibraryEntryController lc = new LibraryEntryController(ls);
         AuthenticationController ac = new AuthenticationController(as);
 
         Javalin mis = Javalin.create(config -> {
@@ -43,12 +44,19 @@ public class AppRunner {
             path("/authenticate", () -> {
                 post(ac.login);
             });
+            path("/{user_code}", () -> {
+                get(lc::getLibraryForCode);
+            });
             path("/{user_id}", () -> {
                 delete(uc::deleteUser);
                 //user controller method endpoints go here
+                path("/{movie_id}", () -> {
+                    delete(lc::deleteLibraryEntry);
+                });
                 path("/library", () -> {
-                    //get(lc::getLibraryForUser);
-                    //library entry service methods go here
+                    get(lc::getLibraryForUser);
+                    post(lc::createLibraryEntry);
+                    put(lc::updateLibraryEntry);
                 });
             });
             path("/movies",() -> {
