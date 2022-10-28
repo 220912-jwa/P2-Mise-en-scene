@@ -24,7 +24,7 @@ async function loadLibrary(){
     }
 }
 function editComments(){
-
+    document.location.assign("./edit.html");
 }
 function addMovieToTable(libraryEntry){
     sessionStorage.setItem(`${libraryEntry.movieID}`,JSON.stringify(libraryEntry));

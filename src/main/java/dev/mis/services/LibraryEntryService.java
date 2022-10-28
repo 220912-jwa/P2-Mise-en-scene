@@ -29,14 +29,18 @@ public class LibraryEntryService {
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
         // takes userCode, finds userId, then retrieves all library entries
-        return null;
+        return libraryEntryDAO.getUserEntriesByCode(userCode);
     }
 
-    public void editLibraryEntry(int userId, String movieId){
-
+    public List<LibraryEntry> getUserEntriesById(int userID){
+        return libraryEntryDAO.getUserEntriesById(userID);
     }
 
-    public void deleteLibraryEntry(int userId, String movieId){
+    public void updateLibraryEntry(LibraryEntry lEntry){
+        libraryEntryDAO.updateLibraryEntry(lEntry);
+    }
 
+    public void deleteLibraryEntry(LibraryEntry lEntryToBeDeleted){
+        libraryEntryDAO.deleteLibraryEntry(lEntryToBeDeleted);
     }
 }
