@@ -8,16 +8,59 @@ public class LibraryEntry {
     public boolean isFavorite;
     public boolean hasWatched;
 
+    // fields for parity with the movietable
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void setReleaseYear(int releaseYear) {
+        this.releaseYear = releaseYear;
+    }
+
+    public String title;
+    public float rating; //IMDB or RT?
+    public String language;
+    public int releaseYear;
+
     public LibraryEntry(){}
 
-    public LibraryEntry(int userID, String movieID, String userComments, float userRating, boolean isFavorite, boolean hasWatched) {
+    public LibraryEntry(int userID, String movieID, String userComments, float userRating, boolean isFavorite,
+                        boolean hasWatched, String title, float rating, String language, int releaseYear) {
         this.userID = userID;
         this.movieID = movieID;
         this.userComments = userComments;
         this.userRating = userRating;
         this.isFavorite = isFavorite;
         this.hasWatched = hasWatched;
-    }//should be the only constructor we need
+        this.title = title;
+        this.rating = rating;
+        this.language = language;
+        this.releaseYear = releaseYear;
+    }
 
     public int getUserID() {
         return userID;
