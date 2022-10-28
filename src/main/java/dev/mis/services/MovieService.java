@@ -1,16 +1,10 @@
 package dev.mis.services;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.google.gson.*;
-import com.google.gson.JsonArray;
-import com.google.gson.stream.JsonReader;
 import dev.mis.daos.MovieDAO;
 import dev.mis.entities.Movie;
 import dev.mis.entities.OJson;
-import dev.mis.entities.OMovie;
 
 
 import java.io.IOException;
