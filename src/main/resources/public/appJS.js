@@ -23,6 +23,9 @@ async function loadLibrary(){
         });
     }
 }
+function editComments(){
+
+}
 function addMovieToTable(libraryEntry){
     sessionStorage.setItem(`${libraryEntry.movieID}`,JSON.stringify(libraryEntry));
     let table=document.getElementById("library");
@@ -41,8 +44,8 @@ function addMovieToTable(libraryEntry){
     favorite.innerHTML=libraryEntry.isFavorite;
     userRating.innerHTML=libraryEntry.userRating;
     userComments.innerHTML=libraryEntry.userComments;
-    //userComments.innerHTML=`${libraryEntry.userComments}<br><button type="button" onclick="editComments(thisEntry)">Edit</button>`;
-    //all user inputs will need functions to edit, 
+    userComments.innerHTML=`${libraryEntry.userComments}<br><button type="button" onclick="editComments(thisEntry)">Edit</button>`;
+        //all user inputs will need functions to edit, 
     thisEntry=libraryEntry.movieID;
     saveChanges.innerHTML = `<button type="button" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
     newRow.append(title,releaseYear,watched,favorite,userRating,userComments,saveChanges);
