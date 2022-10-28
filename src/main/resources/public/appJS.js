@@ -37,7 +37,7 @@ function addMovieToTable(libraryEntry){
     let saveChanges = document.createElement("td");
     title.innerHTML=libraryEntry.title;
     releaseYear.innerHTML=libraryEntry.releaseYear;
-    watched.innerHTML=libraryEntry.hasWatched;
+    watched.innerHTML=`<input id=""type="checkbox" checked="${libraryEntry.hasWatched}"></input>`;
     favorite.innerHTML=libraryEntry.isFavorite;
     userRating.innerHTML=libraryEntry.userRating;
     userComments.innerHTML=libraryEntry.userComments;
@@ -76,7 +76,7 @@ async function userLogin(){
         }
     );
 
-    if (res.status===200){
+    if (resBody.status===200){
         let loggedInUser = await resBody.json();
         sessionStorage.setItem('userName', loggedInUser.username);
         sessionStorage.setItem("userID",loggedInUser.userID);
