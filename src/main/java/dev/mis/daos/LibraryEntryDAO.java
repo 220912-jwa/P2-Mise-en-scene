@@ -17,7 +17,7 @@ public class LibraryEntryDAO {
 
     public LibraryEntry createLibraryEntry(LibraryEntry libraryEntry){
         try(Connection conn = ConnectionUtil.createConnection()) {
-            String sql = "insert into mis.user_library values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into mis.user_library values (?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, libraryEntry.getUserID());
             ps.setString(2, libraryEntry.getMovieID());
@@ -25,10 +25,7 @@ public class LibraryEntryDAO {
             ps.setFloat(4, libraryEntry.getUserRating());
             ps.setBoolean(5, libraryEntry.isFavorite());
             ps.setBoolean(6, libraryEntry.isHasWatched());
-            ps.setString(7, libraryEntry.getTitle());
-            ps.setFloat(8, libraryEntry.getRating());
-            ps.setString(9, libraryEntry.getLanguage());
-            ps.setInt(10, libraryEntry.getReleaseYear());
+
 
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
@@ -133,14 +130,13 @@ public class LibraryEntryDAO {
         return null;
     }
 
-    public List<LibraryEntry> getUserEntriesById(int userId, String movieId){
+    public List<LibraryEntry> getUserEntriesById(int userId){
         try(Connection conn = ConnectionUtil.createConnection()) {
         String sql = "select * from mis.user_library left join mis.movies " +
                 "on mis.user_library.movie_id = mis.movies.movie_d" +
-                "where mis.user_library.user_id =  ? and mis.movies.movie_id = ?";
+                "where mis.user_library.user_id = ?";
         PreparedStatement psLibrary = conn.prepareStatement(sql);
         psLibrary.setInt(1, userId);
-        psLibrary.setString(2, movieId);
         ResultSet rsLibrary = psLibrary.executeQuery(sql);
 
         ArrayList<LibraryEntry> libraryEntryList = new ArrayList<LibraryEntry>();

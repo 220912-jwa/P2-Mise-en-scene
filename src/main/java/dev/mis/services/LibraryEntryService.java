@@ -22,16 +22,20 @@ public class LibraryEntryService {
         this.libraryEntryDAO = libraryEntryDAO;
     }
 
-    public LibraryEntry createLibraryEntry(LibraryEntry libraryEntry, int userId, String movieId){
-        libraryEntry.setUserID(userId);
-        libraryEntry.setMovieID(movieId);
+    public LibraryEntry createLibraryEntry(LibraryEntry libraryEntry){
         return libraryEntryDAO.createLibraryEntry(libraryEntry);
+    }
+    public List<LibraryEntry> getUserEntriesById(int userID){
+        List<LibraryEntry> entryList = libraryEntryDAO.getUserEntriesById(userID);
+        return entryList;
     }
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
 
+
         List<LibraryEntry> entryList = libraryEntryDAO.getUserEntriesByCode(userCode);
         return entryList;
+
     }
 
     public void editLibraryEntry(LibraryEntry libraryEntry){
