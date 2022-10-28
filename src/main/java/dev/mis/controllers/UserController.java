@@ -12,16 +12,16 @@ public class UserController {
     public UserController(UserService userService) {
     this.userService = userService;
 }
-    public void getMovieById(Context ctx) {
-
-    int Id = Integer.parseInt(ctx.pathParam("movie_id"));
-    Movie mv = userService.getMovieById(movieID);
-
-    if (mv != null) {
-        ctx.status(200);
-        ctx.json(mv);
-    }
-    }
+//    public void getMovieById(Context ctx) {
+//
+//    int Id = Integer.parseInt(ctx.pathParam("movie_id"));
+//    Movie mv = userService.getMovieById(movieID);
+//
+//    if (mv != null) {
+//        ctx.status(200);
+//        ctx.json(mv);
+//    }
+//    }
     public void getAllUsers(Context ctx) {
         if (ctx.sessionAttribute("loggedInUser")) {
 
