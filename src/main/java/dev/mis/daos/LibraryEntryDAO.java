@@ -16,7 +16,7 @@ public class LibraryEntryDAO {
 
     public LibraryEntry createLibraryEntry(LibraryEntry libraryEntry){
         try(Connection conn = ConnectionUtil.createConnection()) {
-            String sql = "insert into mis.user_library values (?, ?, ?, ?, ?, ?)";
+            String sql = "insert into mis.user_library values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, libraryEntry.getUserID());
             ps.setString(2, libraryEntry.getMovieID());
@@ -24,6 +24,10 @@ public class LibraryEntryDAO {
             ps.setFloat(4, libraryEntry.getUserRating());
             ps.setBoolean(5, libraryEntry.isFavorite());
             ps.setBoolean(6, libraryEntry.isHasWatched());
+            ps.setString(7, libraryEntry.getTitle());
+            ps.setFloat(8, libraryEntry.getRating());
+            ps.setString(9, libraryEntry.getLanguage());
+            ps.setInt(10, libraryEntry.getReleaseYear());
 
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
@@ -90,12 +94,14 @@ public class LibraryEntryDAO {
             ResultSet rsUserId = psUserId.executeQuery(sql);
             int id = rsUserId.getInt("user_id");
 
-            sql = "select * from mis.user_library where mis.user_library.user_id = ?";
+            sql = "select * from mis.user_library left join mis.movies " +
+                    "on mis.user_library.movie_id = mis.movies.movie_d" +
+                    "where mis.user_library.user_id = ?";
             PreparedStatement psLibrary = conn.prepareStatement(sql);
             psLibrary.setInt(1, id);
             ResultSet rsLibrary = psLibrary.executeQuery(sql);
 
-            ArrayList<LibraryEntry> libraryEntryList = new ArrayList<LibraryEntry>();
+            List<LibraryEntry> libraryEntryList = new ArrayList<LibraryEntry>();
 
             while(rsLibrary.next()){
                 LibraryEntry lb = new LibraryEntry(
@@ -104,7 +110,11 @@ public class LibraryEntryDAO {
                         rsLibrary.getString("user_comments"),
                         rsLibrary.getFloat("user_rating"),
                         rsLibrary.getBoolean("is_favorite"),
-                        rsLibrary.getBoolean("has_watched")
+                        rsLibrary.getBoolean("has_watched"),
+                        rsLibrary.getString("title"),
+                        rsLibrary.getFloat("IMDB_rating"),
+                        rsLibrary.getString("original_language"),
+                        rsLibrary.getInt("release_ear")
                 );
 
                 libraryEntryList.add(lb);
@@ -119,11 +129,14 @@ public class LibraryEntryDAO {
         return null;
     }
 
-    public List<LibraryEntry> getUserEntriesById(int userId){
+    public List<LibraryEntry> getUserEntriesById(int userId, String movieId){
         try(Connection conn = ConnectionUtil.createConnection()) {
-        String sql = "select * from mis.user_library where mis.user_library.user_id = ?";
+        String sql = "select * from mis.user_library left join mis.movies " +
+                "on mis.user_library.movie_id = mis.movies.movie_d" +
+                "where mis.user_library.user_id =  ? and mis.movies.movie_id = ?";
         PreparedStatement psLibrary = conn.prepareStatement(sql);
         psLibrary.setInt(1, userId);
+        psLibrary.setString(2, movieId);
         ResultSet rsLibrary = psLibrary.executeQuery(sql);
 
         ArrayList<LibraryEntry> libraryEntryList = new ArrayList<LibraryEntry>();
@@ -135,7 +148,11 @@ public class LibraryEntryDAO {
                     rsLibrary.getString("user_comments"),
                     rsLibrary.getFloat("user_rating"),
                     rsLibrary.getBoolean("is_favorite"),
-                    rsLibrary.getBoolean("has_watched")
+                    rsLibrary.getBoolean("has_watched"),
+                    rsLibrary.getString("title"),
+                    rsLibrary.getFloat("IMDB_rating"),
+                    rsLibrary.getString("original_language"),
+                    rsLibrary.getInt("release_ear")
             );
 
             libraryEntryList.add(lb);
