@@ -1,2 +1,4 @@
-package dev.mis.controllers;public class LibraryEntryController {
+package dev.mis.controllers;
+
+public class LibraryEntryController {
 }
