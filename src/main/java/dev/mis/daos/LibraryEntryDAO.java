@@ -16,7 +16,7 @@ public class LibraryEntryDAO {
 
     public LibraryEntry createLibraryEntry(LibraryEntry libraryEntry){
         try(Connection conn = ConnectionUtil.createConnection()) {
-            String sql = "insert into mis.user_library values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into mis.user_library values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, libraryEntry.getUserID());
             ps.setString(2, libraryEntry.getMovieID());
