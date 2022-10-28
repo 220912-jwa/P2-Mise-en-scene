@@ -29,6 +29,7 @@ public class LibraryEntryService {
     }
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
+
         List<LibraryEntry> entryList = libraryEntryDAO.getUserEntriesByCode(userCode);
         return entryList;
     }

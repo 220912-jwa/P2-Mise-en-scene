@@ -8,6 +8,13 @@ html {
     background-color: black;
     background-size: 100%;
 }
+table, tr, td{
+    width: 60%;
+    color: #f6c600;
+    border-color: #f8e3b0;
+    border: solid 1px;
+    margin: auto;
+}
 
 #loginFieldset {
     border-color: #f8e3b0;
