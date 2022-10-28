@@ -5,6 +5,7 @@ import dev.mis.daos.MovieDAO;
 import dev.mis.daos.UserDAO;
 import dev.mis.entities.LibraryEntry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LibraryEntryService {
@@ -28,10 +29,14 @@ public class LibraryEntryService {
     }
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
-        
+
+
+        List<LibraryEntry> entryList = libraryEntryDAO.getUserEntriesByCode(userCode);
+        return entryList;
+
     }
 
-    public void editLibraryEntry(int userId, String movieId){
+    public void editLibraryEntry(LibraryEntry libraryEntry){
 
     }
 
