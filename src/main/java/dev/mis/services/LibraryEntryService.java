@@ -29,6 +29,7 @@ public class LibraryEntryService {
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
         // takes userCode, finds userId, then retrieves all library entries
+        return null;
     }
 
     public void editLibraryEntry(int userId, String movieId){

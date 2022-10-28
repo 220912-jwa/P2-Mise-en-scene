@@ -1,6 +1,7 @@
 package dev.mis;
 
 import dev.mis.controllers.AuthenticationController;
+import dev.mis.controllers.MovieController;
 import dev.mis.controllers.UserController;
 import dev.mis.daos.LibraryEntryDAO;
 import dev.mis.daos.MovieDAO;
@@ -24,12 +25,12 @@ public class AppRunner {
 
         UserService us = new UserService(userDAO, movieDAO);
         MovieService ms = new MovieService(movieDAO);
-        LibraryEntryService ls = new LibraryEntryService(userDAO,movieDAO);
+        LibraryEntryService ls = new LibraryEntryService(userDAO,movieDAO,libraryEntryDAO);
         AuthenticationService as = new AuthenticationService(userDAO);
 
         UserController uc = new UserController(us);
         MovieController mc = new MovieController(ms);
-        LibraryEntryController lc = new LibraryEntryController(ls);
+        //LibraryEntryController lc = new LibraryEntryController(ls);
         AuthenticationController ac = new AuthenticationController(as);
 
         Javalin mis = Javalin.create(config -> {
@@ -46,11 +47,11 @@ public class AppRunner {
                 delete(uc::deleteUser);
                 //user controller method endpoints go here
                 path("/library", () -> {
-                    get(lc::getLibraryForUser);
+                    //get(lc::getLibraryForUser);
                     //library entry service methods go here
                 });
             });
-            path("/movies",() -> {
+            /*path("/movies",() -> {
                 post(mc::createMovie);
                 //movie id put last to avoid confusion even though there is no overlap between movie and user IDs
                 path("/{movie_id}", ()->{
@@ -58,7 +59,7 @@ public class AppRunner {
                     delete(mc::deleteMovie);
                     put(mc::updateMovie);
                 });
-            });
+            });*/
         });
 
         mis.get("/getSession", ctx -> {

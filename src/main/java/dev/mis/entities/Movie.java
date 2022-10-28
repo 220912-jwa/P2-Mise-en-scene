@@ -1,12 +1,12 @@
 package dev.mis.entities;
 
 public class Movie {
-    public String movieID;
+    private String movieID;
     //tt<movieID>, the movie ID comes after the tt
-    public String title;
-    public float rating; //IMDB or RT?
-    public String language;
-    public int releaseYear;
+    private String title;
+    private float rating; //IMDB or RT?
+    private String language;
+    private int releaseYear;
 
     public Movie(){}
 

@@ -14,6 +14,7 @@ import java.util.*;
 
 public class LibraryEntryDAO {
 
+
     public LibraryEntry createLibraryEntry(LibraryEntry libraryEntry){
         try(Connection conn = ConnectionUtil.createConnection()) {
             String sql = "insert into mis.user_library values (?, ?, ?, ?, ?, ?)";
@@ -50,6 +51,7 @@ public class LibraryEntryDAO {
             ps.setString(5, libraryEntry.getMovieID());
             ps.setInt(6, libraryEntry.getUserID());
 
+
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 return true;
@@ -70,6 +72,7 @@ public class LibraryEntryDAO {
             ps.setString(2, libraryEntry.getMovieID());
             int complete = ps.executeUpdate();
 
+
             if(complete == 1){
                 return true;
             }
@@ -80,6 +83,7 @@ public class LibraryEntryDAO {
 
         return false;
     }
+
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
         try(Connection conn = ConnectionUtil.createConnection()) {
