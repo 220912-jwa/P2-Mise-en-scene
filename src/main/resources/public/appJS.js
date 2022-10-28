@@ -25,6 +25,7 @@ async function loadLibrary(){
 }
 function addMovieToTable(libraryEntry){
     sessionStorage.setItem(`${libraryEntry.movieID}`,JSON.stringify(libraryEntry));
+    thisEntry=libraryEntry.movieID;
     let table=document.getElementById("library");
     let newRow = document.createElement("tr");
     newRow.id=movie.movieID;
@@ -37,13 +38,12 @@ function addMovieToTable(libraryEntry){
     let saveChanges = document.createElement("td");
     title.innerHTML=libraryEntry.title;
     releaseYear.innerHTML=libraryEntry.releaseYear;
-    watched.innerHTML=`<input id=""type="checkbox" checked="${libraryEntry.hasWatched}"></input>`;
-    favorite.innerHTML=libraryEntry.isFavorite;
+    watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox" checked="${libraryEntry.hasWatched}"></input>`;
+    favorite.innerHTML=`<input id="${thisEntry}_isFavorite type="checkbox" checked="${libraryEntry.isFavorite}"></input>`;
     userRating.innerHTML=libraryEntry.userRating;
-    userComments.innerHTML=libraryEntry.userComments;
-    //userComments.innerHTML=`${libraryEntry.userComments}<br><button type="button" onclick="editComments(thisEntry)">Edit</button>`;
+    userComments.innerHTML=`<input type="text" id="${thisEntry}_userComments" text="${libraryEntry.userComments}" ">Comments:</input>`;
     //all user inputs will need functions to edit, 
-    thisEntry=libraryEntry.movieID;
+    
     saveChanges.innerHTML = `<button type="button" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
     newRow.append(title,releaseYear,watched,favorite,userRating,userComments,saveChanges);
     table.append(newRow); 
