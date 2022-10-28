@@ -15,7 +15,7 @@ public class UserController {
 //    public void getMovieById(Context ctx) {
 //
 //    int Id = Integer.parseInt(ctx.pathParam("movie_id"));
-//    Movie mv = userService.getMovieById(movieID);
+//    Movie mv = movieService.getMovieById(movieID);
 //
 //    if (mv != null) {
 //        ctx.status(200);
