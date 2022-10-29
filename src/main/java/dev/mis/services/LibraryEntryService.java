@@ -32,17 +32,16 @@ public class LibraryEntryService {
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
 
-
         List<LibraryEntry> entryList = libraryEntryDAO.getUserEntriesByCode(userCode);
         return entryList;
 
     }
 
     public void editLibraryEntry(LibraryEntry libraryEntry){
-
+        libraryEntryDAO.updateLibraryEntry(libraryEntry);
     }
 
-    public void deleteLibraryEntry(int userId, String movieId){
-
+    public void deleteLibraryEntry(LibraryEntry libraryEntry){
+        libraryEntryDAO.deleteLibraryEntry(libraryEntry);
     }
 }
