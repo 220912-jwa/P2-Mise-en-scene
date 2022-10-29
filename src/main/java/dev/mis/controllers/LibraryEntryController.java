@@ -1,6 +1,7 @@
 package dev.mis.controllers;
 
 import dev.mis.entities.LibraryEntry;
+import dev.mis.entities.Movie;
 import dev.mis.services.LibraryEntryService;
 import io.javalin.http.Context;
 import io.javalin.http.HttpCode;
@@ -25,9 +26,8 @@ public class LibraryEntryController {
         ctx.json(ls.getUserEntriesByCode(userCode));
     }
     public void deleteLibraryEntry(Context ctx){
-        int userID = Integer.parseInt(ctx.pathParam("user_id"));
-        String movieID = ctx.pathParam("movie_id");
-        ls.deleteLibraryEntry(userID,movieID);
+        LibraryEntry entry = ctx.bodyAsClass(LibraryEntry.class);
+        ls.deleteLibraryEntry(entry);
         ctx.status(HttpCode.NO_CONTENT);
     }
     public void updateLibraryEntry(Context ctx){

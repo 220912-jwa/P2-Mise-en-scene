@@ -46,6 +46,7 @@ public class AppRunner {
             });
             path("/{user_code}", () -> {
                 get(lc::getLibraryForCode);
+                //this is for Profile View
             });
             path("/{user_id}", () -> {
                 delete(uc::deleteUser);
