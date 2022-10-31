@@ -57,7 +57,7 @@ public class AppRunner {
                     put(lc::updateLibraryEntry);
                 });
             });
-            path("/{user_code}", () -> {
+            path("/profiles/{user_code}", () -> {
                 get(lc::getLibraryForCode);
                 //this is for Profile View
             });
