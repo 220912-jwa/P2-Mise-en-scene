@@ -40,7 +40,7 @@ function addMovieToTable(libraryEntry){
     releaseYear.innerHTML=libraryEntry.releaseYear;
     watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox" checked="${libraryEntry.hasWatched}"></input>`;
     favorite.innerHTML=`<input id="${thisEntry}_isFavorite type="checkbox" checked="${libraryEntry.isFavorite}"></input>`;
-    userRating.innerHTML=libraryEntry.userRating;
+    userRating.innerHTML=`<input type="number" max="10" min="0" step="0.1" id="${thisEntry}_userRating" value="${libraryEntry.userRating}" ">Rating:</input>`;
     userComments.innerHTML=`<input type="text" id="${thisEntry}_userComments" text="${libraryEntry.userComments}" ">Comments:</input>`;
     //all user inputs will need functions to edit, 
     
@@ -51,8 +51,28 @@ function addMovieToTable(libraryEntry){
 function addMovie(){
     //collects info from movie fields on add.html and posts to server
 }
-function updateMovie(movieID){
-    //should read current movie info from session storage w/ name movieID, then put requests server
+async function updateMovie(movieID){
+    let libraryEntryUpdate = {
+        userID: sessionStorage.getItem("UserID"),
+        movieID: movieID,
+        userComments: document.getElementById(`${movieID}_userComments`).value,
+        userRating: document.getElementById(`${movieID}_userRating`).value,
+        isFavorite: document.getElementById(`${movieID}_isFavorite`).value,
+        hasWatched: document.getElementById(`${movieID}_isWatched`).value
+    }
+    let libraryEntryJSON = JSON.stringify(libraryEntryUpdate);
+
+    let res = await fetch(`${baseURL}/${userID}/library`,
+    {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: libraryEntryJSON
+    }
+    );
+    if (response.status === 200) {
+        let resBody = await res.json();
+        console.log(resBody);
+        alert("Movie Status Updated Successfully!");}
 }
 
 
