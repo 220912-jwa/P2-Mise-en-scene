@@ -31,13 +31,15 @@ function addMovieToTable(libraryEntry){
     newRow.id=libraryEntry.movieID;
     let title = document.createElement("td");
     let releaseYear = document.createElement("td");
+    let imdbRating = document.createElement("td");
     let watched = document.createElement("td");
     let favorite = document.createElement("td");
     let userRating = document.createElement("td");
     let userComments = document.createElement("td");
     let saveChanges = document.createElement("td");
     title.innerHTML=libraryEntry.title;
-    releaseYear.innerHTML=libraryEntry.releaseYear;    
+    releaseYear.innerHTML=libraryEntry.releaseYear;
+    imdbRating.innerHTML=libraryEntry.rating;    
     if (libraryEntry.hasWatched){
         watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox" checked></input>`;}
         else{watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox"></input>`;}
@@ -49,7 +51,7 @@ function addMovieToTable(libraryEntry){
     //all user inputs will need functions to edit, 
     
     saveChanges.innerHTML = `<button type="button" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
-    newRow.append(title,releaseYear,watched,favorite,userRating,userComments,saveChanges);
+    newRow.append(title,releaseYear,imdbRating,watched,favorite,userRating,userComments,saveChanges);
     table.append(newRow); 
 }
 function addMovie(){
