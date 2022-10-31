@@ -37,11 +37,15 @@ function addMovieToTable(libraryEntry){
     let userComments = document.createElement("td");
     let saveChanges = document.createElement("td");
     title.innerHTML=libraryEntry.title;
-    releaseYear.innerHTML=libraryEntry.releaseYear;
-    watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox" checked="${libraryEntry.hasWatched}"></input>`;
-    favorite.innerHTML=`<input id="${thisEntry}_isFavorite" type="checkbox" checked="${libraryEntry.isFavorite}"></input>`;
-    userRating.innerHTML=`<input type="number" max="10" min="0" step="0.1" id="${thisEntry}_userRating" value="${libraryEntry.userRating}" ">Rating:</input>`;
-    userComments.innerHTML=`<input type="text" id="${thisEntry}_userComments" text="${libraryEntry.userComments}" ">Comments:</input>`;
+    releaseYear.innerHTML=libraryEntry.releaseYear;    
+    if (libraryEntry.hasWatched){
+        watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox" checked></input>`;}
+        else{watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox"></input>`;}
+    if (libraryEntry.isFavorite){
+        favorite.innerHTML=`<input id="${thisEntry}_isFavorite" type="checkbox" checked></input>`;}
+        else{favorite.innerHTML=`<input id="${thisEntry}_isFavorite" type="checkbox"></input>`;}
+    userRating.innerHTML=`<input type="number" max="10" min="0" step="0.1" id="${thisEntry}_userRating" value="${libraryEntry.userRating}" ">/10</input>`;
+    userComments.innerHTML=`<input type="text" id="${thisEntry}_userComments" value="${libraryEntry.userComments}" "></input>`;
     //all user inputs will need functions to edit, 
     
     saveChanges.innerHTML = `<button type="button" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
