@@ -1,71 +1,50 @@
 package dev.mis.stepimp;
 
+import dev.mis.runner.TestRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+import static org.openqa.selenium.By.*;
 
 public class LibraryEditStepImp {
-
-    @When("the user clicks the Edit button for a movie")
-    public void the_user_clicks_the_edit_button_for_a_movie() {
-
-        //findEditButton
-        //clickEditButton
-
-    }
-
-    @When("the user checks the modal box for Favorite")
-    public void the_user_checks_the_modal_box_for_favorite() {
-
-        //waitForModal
-        //switchtoModal
-        //assertFavorites
-
-    }
-
-    @When("the user checks the modal box for Watched")
-    public void the_user_checks_the_modal_box_for_watched() {
-
-        //assertWatched
-
-    }
-
-    @When("the user enters {string} into the modal User Comments box")
-    public void the_user_enters_into_the_modal_user_comments_box(String string) {
-
-        //findUserCommentsBox
-        //sendkeys
-
-    }
+    public static WebDriver driver = TestRunner.driver;
 
     @When("the user clicks the Save Changes button")
     public void the_user_clicks_the_save_changes_button() {
-
-        //find save changes button
-        //sendkeys
+        WebElement save = driver.findElement(By.id("t5108870_save"));
+        save.click();
 
     }
 
     @Then("the movie's information should have been updated")
     public void the_movie_s_information_should_have_been_updated() {
-
-        //wait for update to be visible
-        //assert that update is visible
+        WebElement watchedCheck = driver.findElement(By.id("t5108870_isWatched"));
+        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.stalenessOf(watchedCheck));
+        Assertions.assertTrue(watchedCheck.isSelected());
 
     }
 
     @When("the user checks the box to mark a movie as Favorite")
     public void theUserChecksTheBoxToMarkAMovieAsFavorite() {
+        WebElement favoriteCheck = driver.findElement(By.id("t5108870_isFavorite"));
+        favoriteCheck.click();
 
     }
 
     @When("the user checks the box to mark a movie as Watched")
     public void theUserChecksTheBoxToMarkAMovieAsWatched() {
-
+        WebElement watchedCheck = driver.findElement(By.id("t5108870_isWatched"));
+        watchedCheck.click();
     }
 
-    @When("the user clicks the Edit button to edit User Comments")
-    public void theUserClicksTheEditButtonToEditUserComments() {
-    }
 
 }

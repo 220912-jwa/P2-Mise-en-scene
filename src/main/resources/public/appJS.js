@@ -51,8 +51,8 @@ function addMovieToTable(libraryEntry){
     userComments.innerHTML=`<input type="text" id="${thisEntry}_userComments" value="${libraryEntry.userComments}" "></input>`;
     //all user inputs will need functions to edit, 
     
-    saveChanges.innerHTML = `<button type="button" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
-    deleteEntry.innerHTML = `<button type="button" text="Remove" onclick="deleteEntry(thisEntry)">Remove</button>`;
+    saveChanges.innerHTML = `<button type="button" id="${thisEntry}_save" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
+    deleteEntry.innerHTML = `<button type="button" id="${thisEntry}_delete" text="Remove" onclick="deleteEntry(thisEntry)">Remove</button>`;
     newRow.append(title,releaseYear,imdbRating,watched,favorite,userRating,userComments,saveChanges,deleteEntry);
     table.append(newRow); 
 }
