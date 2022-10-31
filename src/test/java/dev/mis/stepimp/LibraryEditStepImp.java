@@ -6,19 +6,6 @@ import io.cucumber.java.en.When;
 
 public class LibraryEditStepImp {
 
-    @Given("the user is logged in and on their {string} page")
-    public void the_user_is_logged_in_and_on_their_page(String string) {
-
-        //get login
-        //find usernameInput
-        //sendkeys
-        //find userpassInput
-        //sendkeys
-        //click login
-        //explicit wait for "Library View"
-
-    }
-
     @When("the user clicks the Edit button for a movie")
     public void the_user_clicks_the_edit_button_for_a_movie() {
 
@@ -65,6 +52,20 @@ public class LibraryEditStepImp {
         //wait for update to be visible
         //assert that update is visible
 
+    }
+
+    @When("the user checks the box to mark a movie as Favorite")
+    public void theUserChecksTheBoxToMarkAMovieAsFavorite() {
+
+    }
+
+    @When("the user checks the box to mark a movie as Watched")
+    public void theUserChecksTheBoxToMarkAMovieAsWatched() {
+
+    }
+
+    @When("the user clicks the Edit button to edit User Comments")
+    public void theUserClicksTheEditButtonToEditUserComments() {
     }
 
 }

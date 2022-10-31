@@ -5,20 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class ManualEntry {
-
-    @Given("the user is logged in and on their {string} page")
-    public void the_user_is_logged_in_and_on_their_page(String string) {
-
-        //get login
-        //find usernameInput
-        //sendkeys
-        //find userpassInput
-        //sendkeys
-        //click login
-        //explicit wait for "Library View"
-
-    }
-
     @When("the user clicks {string}")
     public void the_user_clicks(String string) {
         //find "Manual Entry"
@@ -51,14 +37,6 @@ public class ManualEntry {
 
     }
 
-    @When("the user checks the box for Watched")
-    public void the_user_checks_the_box_for_watched() {
-
-        //find watchedcheckbox
-        //click watched checkbox
-
-    }
-
     @When("the user enters {string} into the User Rating field")
     public void the_user_enters_into_the_user_rating_field(String string) {
 
@@ -83,21 +61,7 @@ public class ManualEntry {
 
     }
 
-    @When("the user clicks the Submit button")
-    public void the_user_clicks_the_submit_button() {
 
-        //find submitButton
-        //click submit button
-
-    }
-
-    @Then("the new entry should appear on the user's Library View")
-    public void the_new_entry_should_appear_on_the_user_s_library_view() {
-
-        //wait for new entry to appear
-        //assert new entry is displayed
-
-    }
 
     @Then("an alert should appear prompting the user to input more information")
     public void anAlertShouldAppearPromptingTheUserToInputMoreInformation() {
