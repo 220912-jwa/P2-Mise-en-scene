@@ -87,22 +87,11 @@ public class LibraryEntryDAO {
 
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
-        int id = 0;
         try(Connection conn = ConnectionUtil.createConnection()) {
-            String sql = "select user_id from mis.users where mis.user.user_code = ?";
-            PreparedStatement psUserId = conn.prepareStatement(sql);
-            psUserId.setString(1, userCode);
-
-            ResultSet rsUserId = psUserId.executeQuery(sql);
-            id = rsUserId.getInt("user_id");
-
-            sql = "select * from mis.user_library left join mis.movies " +
-                    "on mis.user_library.movie_id = mis.movies.movie_d" +
-                    "where mis.user_library.user_id = ?";
-            PreparedStatement psLibrary = conn.prepareStatement(sql);
-            psLibrary.setInt(1, id);
-            ResultSet rsLibrary = psLibrary.executeQuery(sql);
-
+            String sql = "select * from mis.user_library left join mis.movies on mis.user_library.movie_id = mis.movies.movie_id left join mis.users on mis.user_library.user_id=mis.users.user_id where mis.users.user_code = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, userCode);
+            ResultSet rsLibrary = ps.executeQuery();
             List<LibraryEntry> libraryEntryList = new ArrayList<LibraryEntry>();
 
             while(rsLibrary.next()){
