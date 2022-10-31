@@ -44,10 +44,7 @@ public class AppRunner {
             path("/authenticate", () -> {
                 post(ac.login);
             });
-            path("/{user_code}", () -> {
-                get(lc::getLibraryForCode);
-                //this is for Profile View
-            });
+
             path("/{user_id}", () -> {
                 delete(uc::deleteUser);
                 //user controller method endpoints go here
@@ -59,6 +56,10 @@ public class AppRunner {
                     post(lc::createLibraryEntry);
                     put(lc::updateLibraryEntry);
                 });
+            });
+            path("/profiles/{user_code}", () -> {
+                get(lc::getLibraryForCode);
+                //this is for Profile View
             });
             path("/movies",() -> {
                 post(mc::createMovie);
