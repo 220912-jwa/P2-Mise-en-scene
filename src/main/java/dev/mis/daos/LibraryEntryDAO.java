@@ -42,8 +42,7 @@ public class LibraryEntryDAO {
 
     public boolean updateLibraryEntry(LibraryEntry libraryEntry){
         try(Connection conn = ConnectionUtil.createConnection()) {
-            String sql = "update mis.user_library set user_comments = ?, user_rating = ?, is_favorite = ?" +
-                    "has_watched = ? where movie_id = ? and user_id = ?";
+            String sql = "update mis.user_library set user_comments = ?, user_rating = ?, is_favorite = ?, has_watched = ? where movie_id = ? and user_id = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, libraryEntry.getUserComments());
             ps.setFloat(2, libraryEntry.getUserRating());

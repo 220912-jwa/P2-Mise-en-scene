@@ -56,15 +56,15 @@ function addMovie(){
     //collects info from movie fields on add.html and posts to server
 }
 async function updateMovie(movieID){
-    if(document.getElementById(`${movieID}_isFavorite`).value=='on'){
+    if(document.getElementById(`${movieID}_isFavorite`).checked){
         favorited = 'true';
     }else{favorited = 'false'}
-    if(document.getElementById(`${movieID}_isWatched`).value=='on'){
+    if(document.getElementById(`${movieID}_isWatched`).checked){
         watched = 'true';
     }else{watched = 'false'}
     let libraryEntryUpdate = {
        
-        userID: sessionStorage.getItem("UserID"),
+        userID: userID,
         movieID: movieID,
         userComments: document.getElementById(`${movieID}_userComments`).value,
         userRating: document.getElementById(`${movieID}_userRating`).value,
@@ -72,6 +72,7 @@ async function updateMovie(movieID){
         hasWatched: watched
     }
     let libraryEntryJSON = JSON.stringify(libraryEntryUpdate);
+    console.log(libraryEntryJSON);
 
     let res = await fetch(`${baseURL}/${userID}/library`,
     {
