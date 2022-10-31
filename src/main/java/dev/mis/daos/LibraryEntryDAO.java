@@ -87,13 +87,14 @@ public class LibraryEntryDAO {
 
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
+        int id = 0;
         try(Connection conn = ConnectionUtil.createConnection()) {
             String sql = "select user_id from mis.users where mis.user.user_code = ?";
             PreparedStatement psUserId = conn.prepareStatement(sql);
             psUserId.setString(1, userCode);
 
             ResultSet rsUserId = psUserId.executeQuery(sql);
-            int id = rsUserId.getInt("user_id");
+            id = rsUserId.getInt("user_id");
 
             sql = "select * from mis.user_library left join mis.movies " +
                     "on mis.user_library.movie_id = mis.movies.movie_d" +
@@ -133,7 +134,7 @@ public class LibraryEntryDAO {
     public List<LibraryEntry> getUserEntriesById(int userId){
         try(Connection conn = ConnectionUtil.createConnection()) {
         String sql = "select * from mis.user_library left join mis.movies " +
-                "on mis.user_library.movie_id = mis.movies.movie_d" +
+                "on mis.user_library.movie_id = mis.movies.movie_id" +
                 "where mis.user_library.user_id = ?";
         PreparedStatement psLibrary = conn.prepareStatement(sql);
         psLibrary.setInt(1, userId);
@@ -152,7 +153,7 @@ public class LibraryEntryDAO {
                     rsLibrary.getString("title"),
                     rsLibrary.getFloat("IMDB_rating"),
                     rsLibrary.getString("original_language"),
-                    rsLibrary.getInt("release_ear")
+                    rsLibrary.getInt("release_year")
             );
 
             libraryEntryList.add(lb);

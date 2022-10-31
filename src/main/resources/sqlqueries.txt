@@ -32,7 +32,4 @@ has_watched bool,
 constraint pk_user_library primary key (user_id, movie_id),
 foreign key (user_id) references mis.users (user_id),
 foreign key (movie_id) references mis.movies (movie_id)
-
-
-
 );

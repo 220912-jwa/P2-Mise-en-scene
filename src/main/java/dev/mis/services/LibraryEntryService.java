@@ -11,14 +11,12 @@ import java.util.List;
 public class LibraryEntryService {
 
     private LibraryEntryDAO libraryEntryDAO;
-    private MovieDAO movieDAO;
-    private UserDAO userDAO;
+
 
     public LibraryEntryService(){}
 
     public LibraryEntryService(UserDAO userDAO, MovieDAO movieDAO, LibraryEntryDAO libraryEntryDAO){
-        this.userDAO = userDAO;
-        this.movieDAO = movieDAO;
+
         this.libraryEntryDAO = libraryEntryDAO;
     }
 
@@ -34,7 +32,6 @@ public class LibraryEntryService {
 
         List<LibraryEntry> entryList = libraryEntryDAO.getUserEntriesByCode(userCode);
         return entryList;
-
     }
 
     public void editLibraryEntry(LibraryEntry libraryEntry){

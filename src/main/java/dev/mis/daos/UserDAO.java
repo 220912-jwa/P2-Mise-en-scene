@@ -17,7 +17,6 @@ public class UserDAO {
             String sql = "insert into mis.users values (?, ?, ?, ?)";
             PreparedStatement ps =conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1,user.getUserID());
-
             ps.setString(2,user.getUsername());
             ps.setString(3,user.getPass());
             ps.setString(4,user.getUserCode());
@@ -69,7 +68,7 @@ public class UserDAO {
 
         try(Connection conn = ConnectionUtil.createConnection()){
 
-            String sql = "select * from  mis.users where useCode = ?";
+            String sql = "select * from mis.users where useCode = ?";
 
             PreparedStatement ps =conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(4, userCode);
