@@ -88,20 +88,10 @@ public class LibraryEntryDAO {
 
     public List<LibraryEntry> getUserEntriesByCode(String userCode){
         try(Connection conn = ConnectionUtil.createConnection()) {
-            String sql = "select user_id from mis.users where mis.user.user_code = ?";
-            PreparedStatement psUserId = conn.prepareStatement(sql);
-            psUserId.setString(1, userCode);
-
-            ResultSet rsUserId = psUserId.executeQuery(sql);
-            int id = rsUserId.getInt("user_id");
-
-            sql = "select * from mis.user_library left join mis.movies " +
-                    "on mis.user_library.movie_id = mis.movies.movie_d" +
-                    "where mis.user_library.user_id = ?";
-            PreparedStatement psLibrary = conn.prepareStatement(sql);
-            psLibrary.setInt(1, id);
-            ResultSet rsLibrary = psLibrary.executeQuery(sql);
-
+            String sql = "select * from mis.user_library left join mis.movies on mis.user_library.movie_id = mis.movies.movie_id left join mis.users on mis.user_library.user_id=mis.users.user_id where mis.users.user_code = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, userCode);
+            ResultSet rsLibrary = ps.executeQuery();
             List<LibraryEntry> libraryEntryList = new ArrayList<LibraryEntry>();
 
             while(rsLibrary.next()){
@@ -132,12 +122,10 @@ public class LibraryEntryDAO {
 
     public List<LibraryEntry> getUserEntriesById(int userId){
         try(Connection conn = ConnectionUtil.createConnection()) {
-        String sql = "select * from mis.user_library left join mis.movies " +
-                "on mis.user_library.movie_id = mis.movies.movie_d" +
-                "where mis.user_library.user_id = ?";
-        PreparedStatement psLibrary = conn.prepareStatement(sql);
-        psLibrary.setInt(1, userId);
-        ResultSet rsLibrary = psLibrary.executeQuery(sql);
+        String sql = "select * from mis.user_library left join mis.movies on mis.user_library.movie_id = mis.movies.movie_id where mis.user_library.user_id = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, userId);
+        ResultSet rsLibrary = ps.executeQuery();
 
         ArrayList<LibraryEntry> libraryEntryList = new ArrayList<LibraryEntry>();
 
@@ -150,9 +138,9 @@ public class LibraryEntryDAO {
                     rsLibrary.getBoolean("is_favorite"),
                     rsLibrary.getBoolean("has_watched"),
                     rsLibrary.getString("title"),
-                    rsLibrary.getFloat("IMDB_rating"),
+                    rsLibrary.getFloat("imdb_rating"),
                     rsLibrary.getString("original_language"),
-                    rsLibrary.getInt("release_ear")
+                    rsLibrary.getInt("release_year")
             );
 
             libraryEntryList.add(lb);
