@@ -133,12 +133,10 @@ public class LibraryEntryDAO {
 
     public List<LibraryEntry> getUserEntriesById(int userId){
         try(Connection conn = ConnectionUtil.createConnection()) {
-        String sql = "select * from mis.user_library left join mis.movies " +
-                "on mis.user_library.movie_id = mis.movies.movie_id" +
-                "where mis.user_library.user_id = ?";
-        PreparedStatement psLibrary = conn.prepareStatement(sql);
-        psLibrary.setInt(1, userId);
-        ResultSet rsLibrary = psLibrary.executeQuery(sql);
+        String sql = "select * from mis.user_library left join mis.movies on mis.user_library.movie_id = mis.movies.movie_id where mis.user_library.user_id = ?";
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setInt(1, userId);
+        ResultSet rsLibrary = ps.executeQuery();
 
         ArrayList<LibraryEntry> libraryEntryList = new ArrayList<LibraryEntry>();
 
@@ -151,7 +149,7 @@ public class LibraryEntryDAO {
                     rsLibrary.getBoolean("is_favorite"),
                     rsLibrary.getBoolean("has_watched"),
                     rsLibrary.getString("title"),
-                    rsLibrary.getFloat("IMDB_rating"),
+                    rsLibrary.getFloat("imdb_rating"),
                     rsLibrary.getString("original_language"),
                     rsLibrary.getInt("release_year")
             );

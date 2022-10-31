@@ -14,7 +14,7 @@ user_code varchar unique not null
 create table mis.movies(
 movie_id varchar primary key,
 title varchar not null,
-IMBD_rating float,
+imdb_rating float,
 original_language varchar,
 release_year int
 );
