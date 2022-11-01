@@ -66,4 +66,9 @@ public class LibraryAddStepImp {
         //assert new entry is displayed
 
     }
+
+    @When("the user enters {string} into the User Comments input")
+    public void theUserEntersIntoTheUserCommentsInput(String arg0) {
+
+    }
 }

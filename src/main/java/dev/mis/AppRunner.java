@@ -41,12 +41,12 @@ public class AppRunner {
         //starts app on localhost
 
         mis.routes(()->{
+
             path("/authenticate", () -> {
                 post(ac.login);
             });
-            path("/{user_code}", () -> {
-                get(lc::getLibraryForCode);
-                //this is for Profile View
+            path("/register", () -> {
+                post(uc::createNewUser);
             });
             path("/{user_id}", () -> {
                 delete(uc::deleteUser);
@@ -59,6 +59,10 @@ public class AppRunner {
                     post(lc::createLibraryEntry);
                     put(lc::updateLibraryEntry);
                 });
+            });
+            path("/profiles/{user_code}", () -> {
+                get(lc::getLibraryForCode);
+                //this is for Profile View
             });
             path("/movies",() -> {
                 post(mc::createMovie);

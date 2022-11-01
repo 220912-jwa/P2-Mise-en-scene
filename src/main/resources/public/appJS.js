@@ -31,6 +31,7 @@ function addMovieToTable(libraryEntry){
     newRow.id=libraryEntry.movieID;
     let title = document.createElement("td");
     let releaseYear = document.createElement("td");
+    let imdbRating = document.createElement("td");
     let watched = document.createElement("td");
     let favorite = document.createElement("td");
     let userRating = document.createElement("td");
@@ -38,29 +39,34 @@ function addMovieToTable(libraryEntry){
     let saveChanges = document.createElement("td");
     title.innerHTML=libraryEntry.title;
     releaseYear.innerHTML=libraryEntry.releaseYear;
-    watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox" checked="${libraryEntry.hasWatched}"></input>`;
-    favorite.innerHTML=`<input id="${thisEntry}_isFavorite" type="checkbox" checked="${libraryEntry.isFavorite}"></input>`;
-    userRating.innerHTML=`<input type="number" max="10" min="0" step="0.1" id="${thisEntry}_userRating" value="${libraryEntry.userRating}" ">Rating:</input>`;
-    userComments.innerHTML=`<input type="text" id="${thisEntry}_userComments" text="${libraryEntry.userComments}" ">Comments:</input>`;
+    imdbRating.innerHTML=libraryEntry.rating;    
+    if (libraryEntry.hasWatched){
+        watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox" checked></input>`;}
+        else{watched.innerHTML=`<input id="${thisEntry}_isWatched" type="checkbox"></input>`;}
+    if (libraryEntry.isFavorite){
+        favorite.innerHTML=`<input id="${thisEntry}_isFavorite" type="checkbox" checked></input>`;}
+        else{favorite.innerHTML=`<input id="${thisEntry}_isFavorite" type="checkbox"></input>`;}
+    userRating.innerHTML=`<input type="number" max="10" min="0" step="0.1" id="${thisEntry}_userRating" value="${libraryEntry.userRating}" ">/10</input>`;
+    userComments.innerHTML=`<input type="text" id="${thisEntry}_userComments" value="${libraryEntry.userComments}" "></input>`;
     //all user inputs will need functions to edit, 
     
     saveChanges.innerHTML = `<button type="button" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
-    newRow.append(title,releaseYear,watched,favorite,userRating,userComments,saveChanges);
+    newRow.append(title,releaseYear,imdbRating,watched,favorite,userRating,userComments,saveChanges);
     table.append(newRow); 
 }
 function addMovie(){
     //collects info from movie fields on add.html and posts to server
 }
 async function updateMovie(movieID){
-    if(document.getElementById(`${movieID}_isFavorite`).value=='on'){
+    if(document.getElementById(`${movieID}_isFavorite`).checked){
         favorited = 'true';
     }else{favorited = 'false'}
-    if(document.getElementById(`${movieID}_isWatched`).value=='on'){
+    if(document.getElementById(`${movieID}_isWatched`).checked){
         watched = 'true';
     }else{watched = 'false'}
     let libraryEntryUpdate = {
        
-        userID: sessionStorage.getItem("UserID"),
+        userID: userID,
         movieID: movieID,
         userComments: document.getElementById(`${movieID}_userComments`).value,
         userRating: document.getElementById(`${movieID}_userRating`).value,
@@ -68,6 +74,7 @@ async function updateMovie(movieID){
         hasWatched: watched
     }
     let libraryEntryJSON = JSON.stringify(libraryEntryUpdate);
+    console.log(libraryEntryJSON);
 
     let res = await fetch(`${baseURL}/${userID}/library`,
     {
