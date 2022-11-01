@@ -32,12 +32,11 @@ public class MovieServiceTests {
     @BeforeAll
     public static void setup(){
         mockMovieDAO = new MovieDAO();
-        ms = new MovieService(mockMovieDAO);
     }
 
     @BeforeEach
     public void mockMovieBeforeEach(){
-        mockMovieEntity = new Movie("The Revenge of P1",3.5F, "English", 2022);
+        mockMovieEntity = new Movie("t1234","The Revenge of P1",3.5F, "English", 2022);
     }
 
     @Test

@@ -36,7 +36,7 @@ public class UserServiceUnitTests {
         mockUser = new User("testUser","passpass","t23y982"); //as is, userCode is being generated on frontend
         mockFullUser = new User(7,"testUser","passpass","t23y982");
     }
-    /*@Test
+    @Test
     public void testCreateUser(){
         when(userDAO.createUser(mockUser)).thenReturn(mockFullUser);
         User newUser = us.createUser(mockUser);
@@ -45,7 +45,7 @@ public class UserServiceUnitTests {
     @Test
     public void testGetById(){
         when(userDAO.getUserById(7)).thenReturn(mockFullUser);
-        User userGot = us.getUserById(7);
+        User userGot = us.getuserById(7);
         assertNotNull(userGot);
     }
     @Test
@@ -65,6 +65,6 @@ public class UserServiceUnitTests {
         when(userDAO.updateUser(mockFullUser)).thenReturn(true);
         boolean updated = us.updateUser(mockFullUser);
         assertTrue(updated);
-    }*/
+    }
 
 }

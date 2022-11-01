@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf03d191-ba7c-4d85-96e8-0edc3414bf3a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dev/mis/stepimp/CreateAccountStepImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dev/mis/stepimp/CreateAccountStepImp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dev/mis/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dev/mis/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dev/mis/services/MovieServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dev/mis/services/MovieServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/dev/mis/services/UserServiceUnitTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/dev/mis/services/UserServiceUnitTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +27,101 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager" selected="JUnit.MovieServiceTests.testGetMovieByID">
+    <configuration name="AuthenticationServiceUnitTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="P2-Mise-en-scene" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.mis.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.mis.services" />
+      <option name="MAIN_CLASS_NAME" value="dev.mis.services.AuthenticationServiceUnitTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieServiceTests.testCreateMovie" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="P2-Mise-en-scene" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.mis.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.mis.services" />
+      <option name="MAIN_CLASS_NAME" value="dev.mis.services.MovieServiceTests" />
+      <option name="METHOD_NAME" value="testCreateMovie" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieServiceTests.testGetMovieByID" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="P2-Mise-en-scene" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.mis.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.mis.services" />
+      <option name="MAIN_CLASS_NAME" value="dev.mis.services.MovieServiceTests" />
+      <option name="METHOD_NAME" value="testGetMovieByID" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceUnitTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="P2-Mise-en-scene" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.mis.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.mis.services" />
+      <option name="MAIN_CLASS_NAME" value="dev.mis.services.UserServiceUnitTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceUnitTests.testDeleteUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="P2-Mise-en-scene" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dev.mis.services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dev.mis.services" />
+      <option name="MAIN_CLASS_NAME" value="dev.mis.services.UserServiceUnitTests" />
+      <option name="METHOD_NAME" value="testDeleteUser" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MovieServiceTests.testGetMovieByID" />
+        <item itemvalue="JUnit.MovieServiceTests.testCreateMovie" />
+        <item itemvalue="JUnit.AuthenticationServiceUnitTests" />
+        <item itemvalue="JUnit.UserServiceUnitTests" />
+        <item itemvalue="JUnit.UserServiceUnitTests.testDeleteUser" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -55,5 +143,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/P2_Mise_en_scene$MovieServiceTests_testCreateMovie.ic" NAME="MovieServiceTests.testCreateMovie Coverage Results" MODIFIED="1667313565428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>dev.mis.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/P2_Mise_en_scene$AuthenticationServiceUnitTests.ic" NAME="AuthenticationServiceUnitTests Coverage Results" MODIFIED="1667313597637" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>dev.mis.services.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/P2_Mise_en_scene$UserServiceUnitTests.ic" NAME="UserServiceUnitTests Coverage Results" MODIFIED="1667313578416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>dev.mis.services.*</FILTER>
+    </SUITE>
   </component>
 </project>

@@ -31,12 +31,16 @@ public class UserService {
         return userDAO.getUserById(userId);
     }
 
-    public void updateUser(User toBeUpdated) {
-        userDAO.updateUser(toBeUpdated);
+    public boolean updateUser(User toBeUpdated) {
+        return userDAO.updateUser(toBeUpdated);
     }
 
-    public void deleteUser(int userId) {
-        userDAO.deleteUser(userId);
+    public User getUserByUserCode(String userCode){
+        return userDAO.getUserByUserCode(userCode);
+    }
+
+    public boolean deleteUser(int userId) {
+        return userDAO.deleteUser(userId);
     }
 
     public User createUser(User newUser) {
