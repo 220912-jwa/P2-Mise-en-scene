@@ -1,10 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <title>Manual Movie Entry</title>
+    <link rel="stylesheet" href="appCSS.css">
+    <script src="appJS.js"></script>
 </head>
 <body>
-$END$
+    <div id="manualrootdiv">
+        <fieldset id="genericFieldset">
+            <label for="movieTitleMan">Title</label>
+            <input id="movieTitleMan" type="text" placeholder="title">
+            <br /><br />
+            <label for="languageMan">Language</label>
+            <input id="languageMan" type="text" placeholder="language">
+            <br /><br />
+            <label for="yearMan">Release Year</label>
+            <input id="yearMan" type="number" min="1878" max="2200">
+            <br /><br />
+            <button id="AddMovieManBtn" type="button" class="allButtons" onclick="addMovieMan()">Add Movie</button>
+            <br /><br />
+        </fieldset>
+    </div>
 </body>
 </html>
