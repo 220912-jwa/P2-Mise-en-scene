@@ -37,7 +37,8 @@ function addMovieToTable(libraryEntry){
     let userRating = document.createElement("td");
     let userComments = document.createElement("td");
     let saveChanges = document.createElement("td");
-    title.innerHTML=libraryEntry.title;
+    let deleteEntry = document.createElement("td");
+    title.innerHTML=`<td style="width:15%">${libraryEntry.title}</td>`;//libraryEntry.title;
     releaseYear.innerHTML=libraryEntry.releaseYear;
     imdbRating.innerHTML=libraryEntry.rating;    
     if (libraryEntry.hasWatched){
@@ -50,12 +51,35 @@ function addMovieToTable(libraryEntry){
     userComments.innerHTML=`<input type="text" id="${thisEntry}_userComments" value="${libraryEntry.userComments}" "></input>`;
     //all user inputs will need functions to edit, 
     
-    saveChanges.innerHTML = `<button type="button" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
-    newRow.append(title,releaseYear,imdbRating,watched,favorite,userRating,userComments,saveChanges);
+    saveChanges.innerHTML = `<button type="button" id="${thisEntry}_save" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
+    deleteEntry.innerHTML = `<button type="button" id="${thisEntry}_delete" text="Remove" onclick="deleteEntry(thisEntry)">Remove</button>`;
+    newRow.append(title,releaseYear,imdbRating,watched,favorite,userRating,userComments,saveChanges,deleteEntry);
     table.append(newRow); 
 }
 function addMovie(){
     //collects info from movie fields on add.html and posts to server
+}
+async function deleteEntry(movieID){
+    //currently, LibraryEntryDAO wants a whole object, not movieID
+    let libraryEntryDelete = {
+       
+        userID: userID,
+        movieID: movieID,
+        userComments: document.getElementById(`${movieID}_userComments`).value,
+        userRating: document.getElementById(`${movieID}_userRating`).value,
+        isFavorite: favorited,
+        hasWatched: watched
+    }
+    let libraryEntryJSON = JSON.stringify(libraryEntryDelete);
+    console.log(libraryEntryJSON);
+
+    let res = await fetch(`${baseURL}/${userID}/${movieID}`,
+    {
+        method: "DELETE",
+        headers: {"Content-Type": "application/json"},
+        body: libraryEntryJSON
+    }
+    );
 }
 async function updateMovie(movieID){
     if(document.getElementById(`${movieID}_isFavorite`).checked){
@@ -83,7 +107,7 @@ async function updateMovie(movieID){
         body: libraryEntryJSON
     }
     );
-    if (res.status === 200) {
+    if (res.status === 204) {
         let resBody = await res.json();
         console.log(resBody);
         alert("Movie Status Updated Successfully!");}
