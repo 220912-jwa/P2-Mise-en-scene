@@ -7,6 +7,8 @@ import dev.mis.services.UserService;
 import io.javalin.http.Context;
 import io.javalin.http.HttpCode;
 
+import java.io.IOException;
+
 public class UserController {
     private UserService userService;
     public UserController(UserService userService) {
@@ -56,5 +58,16 @@ public class UserController {
         userService.deleteUser(userId);
     }
 
+    public void createNewUser(Context ctx) throws IOException {
+
+        User u = ctx.bodyAsClass(User.class);
+        User newUser = userService.createUser(u);
+        if (newUser != null) {
+            ctx.status(200);
+            ctx.json(newUser);
+        } else {
+            ctx.res.sendError(400);
+        }
+    }
 
     }

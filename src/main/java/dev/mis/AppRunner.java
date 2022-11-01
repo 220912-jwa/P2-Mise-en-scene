@@ -41,10 +41,13 @@ public class AppRunner {
         //starts app on localhost
 
         mis.routes(()->{
+
             path("/authenticate", () -> {
                 post(ac.login);
             });
-
+            path("/register", () -> {
+                post(uc::createNewUser);
+            });
             path("/{user_id}", () -> {
                 delete(uc::deleteUser);
                 //user controller method endpoints go here
