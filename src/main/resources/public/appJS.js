@@ -48,9 +48,34 @@ function addMovieToTable(libraryEntry){
     newRow.append(title,releaseYear,watched,favorite,userRating,userComments,saveChanges);
     table.append(newRow); 
 }
-function addMovie(){
-    //collects info from movie fields on add.html and posts to server
+async function addMovieMan(){
+    titleMan = document.getElementById('movieTitleMan').value;
+    languageMan = document.getElementById('languageMan').value;
+    yearMan = document.getElementById('yearMan').value;
+    
+    let manEntry = {
+        title: titleMan,
+        language: languageMan,
+        year: yearMan,
+    }
+
+    manEntryJSON = JSON.stringify(credentials);
+    let resBody = await fetch(
+        `${baseURL}/manual`,
+        {
+            method: 'POST',
+            header: {'Content-Type': 'application/json'},
+            body:manEntryJSON
+        }
+    );
+
+    if(resBody.status===200){
+        let resBody = await resBody.json();
+        console.log(resBody);
+        document.location.assign("./library.html")
+    }
 }
+
 async function updateMovie(movieID){
     if(document.getElementById(`${movieID}_isFavorite`).value=='on'){
         favorited = 'true';
@@ -81,7 +106,6 @@ async function updateMovie(movieID){
         console.log(resBody);
         alert("Movie Status Updated Successfully!");}
 }
-
 
 async function userLogin(){
 
