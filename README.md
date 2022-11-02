@@ -22,3 +22,6 @@ https://docs.google.com/spreadsheets/d/1hLd0iUb1qb6S1csgwmh89D6XyRRGj6Ye5DdvZ_bg
 
 Test Case Doc
 https://docs.google.com/spreadsheets/d/1x_oGKdiSJKzEh57S8nP7YHHDo51SxqYfkQ8WudtM5yc/edit?usp=sharing
+
+Test Plan
+https://docs.google.com/document/d/1s-x1NwGXhHQcQ34vU9Ef6gpeka5s85p_kLMP_ggW1Mc/edit#heading=h.rokj0lbbvlz0
