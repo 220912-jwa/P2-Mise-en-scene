@@ -25,34 +25,28 @@ let baseURL = "http://localhost:8080";
 
 async function Registration(){
 
-    name = document.getElementById('userName').value;
-    pass = document.getElementById('userPass').value;
-
-    let registrationCredentials = {
-        newUserName: name,
-        newUserPass: pass,
+    let newUser = {
+        userID: "0",
+        username: document.getElementById('userName').value,
+        pass: document.getElementById('userPass').value,
+        userCode: "a"
+    }
     
-
-            method: 'POST',
-            header: {'Content-Type': 'application/json'},
-            body: JSON.stringify({newUserName, newUserPass})
+    let registrationJSON = JSON.stringify(newUser);
+    
+    let res = await fetch(`${baseURL}/register`,
+        {
+        method: 'POST',
+        header: {'Content-Type': 'application/json'},
+        body: registrationJSON
         }
-        
-    registrationJSON = JSON.stringify(newUserName, newUserPass);
-        let resBody = await fetch(
-        `${baseURL}/register`,
-        
-    );
-
+    )
+    
     if (res.status===200){
         let resBody = await res.json();
-       
         document.location.assign("./index.html");
-
-    
     }
-
-
+    
 }
 
     </script>
