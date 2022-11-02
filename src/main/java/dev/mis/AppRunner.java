@@ -61,6 +61,9 @@ public class AppRunner {
                 get(lc::getLibraryForCode);
                 //this is for Profile View
             });
+            path("/register", () -> {
+                post(uc::createUser);
+            });
             path("/movies",() -> {
                 post(mc::createMovie);
                 //movie id put last to avoid confusion even though there is no overlap between movie and user IDs

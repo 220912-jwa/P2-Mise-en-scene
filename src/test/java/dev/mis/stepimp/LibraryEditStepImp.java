@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.openqa.selenium.By.*;
 
 public class LibraryEditStepImp {
@@ -27,14 +28,16 @@ public class LibraryEditStepImp {
 
     @Then("the movie's information should have been updated")
     public void the_movie_s_information_should_have_been_updated() {
+        driver.get("http://localhost:8080/library.html");
+        new WebDriverWait(driver,Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOfElementLocated(By.id("t5108870_isWatched")));
         WebElement watchedCheck = driver.findElement(By.id("t5108870_isWatched"));
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.stalenessOf(watchedCheck));
         Assertions.assertTrue(watchedCheck.isSelected());
 
     }
 
     @When("the user checks the box to mark a movie as Favorite")
     public void theUserChecksTheBoxToMarkAMovieAsFavorite() {
+        new WebDriverWait(driver,Duration.ofSeconds(3)).until(ExpectedConditions.visibilityOfElementLocated(By.id("t5108870_isFavorite")));
         WebElement favoriteCheck = driver.findElement(By.id("t5108870_isFavorite"));
         favoriteCheck.click();
 
@@ -45,6 +48,7 @@ public class LibraryEditStepImp {
         WebElement watchedCheck = driver.findElement(By.id("t5108870_isWatched"));
         watchedCheck.click();
     }
+
 
 
 }

@@ -1,21 +1,34 @@
 package dev.mis.stepimp;
 
+import dev.mis.runner.TestRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LibraryAddStepImp {
+    public static WebDriver driver = TestRunner.driver;
 
     @Given("the user is logged in and on their {string} page")
     public void the_user_is_logged_in_and_on_their_page(String string) {
 
-        //get login
-        //find usernameInput
-        //sendkeys
-        //find userpassInput
-        //sendkeys
-        //click login
-        //explicit wait for "Library View"
+        driver.get("http://localhost:8080/");
+        WebElement usernameFieldInput = driver.findElement(By.id("userName"));
+        usernameFieldInput.sendKeys("griffy");
+        WebElement userPasswordInput = driver.findElement(By.id("userPass"));
+        userPasswordInput.sendKeys("hunter2");
+        WebElement loginButton = driver.findElement(By.id("loginButton"));
+        loginButton.click();
+        new WebDriverWait(driver, Duration.ofSeconds(7))
+                .until(ExpectedConditions.titleContains("Library"));
+        Assertions.assertEquals(string, driver.getTitle());
 
     }
 

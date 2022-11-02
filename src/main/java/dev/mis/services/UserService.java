@@ -69,6 +69,9 @@ public class UserService {
         }
     }
     public User createUser(User newUser) {
+
+        String userCode = generateUserCode();
+        newUser.setUserCode(userCode);
         return userDAO.createUser(newUser);
     }
 }

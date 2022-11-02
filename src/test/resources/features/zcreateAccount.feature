@@ -5,7 +5,7 @@ Feature: Account Creation
     When the user inputs "newAccount" into the username field
     When the user inputs "passpass" into the password field
     When the user clicks the Create Account button
-    Then the user should receive an alert with the text "Account Created Successfully!"
+    Then the user should receive an alert with the text "Account Created!"
 
   Scenario: Existing Username
     Given the user is on the login page

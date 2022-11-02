@@ -4,6 +4,7 @@ import dev.mis.runner.TestRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +19,8 @@ public class CreateAccountStepImp {
     @Then("the user should receive an alert with the text {string}")
     public void the_user_should_receive_an_alert_with_the_text(String string) {
         // Write code here that turns the phrase above into concrete actions
-        System.out.println(driver.switchTo().alert().getText());
+        String alertText = driver.switchTo().alert().getText();
+        Assertions.assertEquals("Account Created!",alertText);
         driver.switchTo().alert().accept();
 
     }

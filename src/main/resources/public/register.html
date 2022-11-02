@@ -40,10 +40,12 @@ async function Registration(){
         header: {'Content-Type': 'application/json'},
         body: registrationJSON
         }
-    )
+    );
     
-    if (res.status===200){
+    if (res.status===201){
         let resBody = await res.json();
+        sessionStorage.setItem("UserID",resBody.userID);
+        alert("Account Created!");
         document.location.assign("./index.html");
     }
     
