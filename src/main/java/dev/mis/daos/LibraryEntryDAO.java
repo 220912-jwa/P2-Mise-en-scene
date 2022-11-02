@@ -52,8 +52,8 @@ public class LibraryEntryDAO {
             ps.setInt(6, libraryEntry.getUserID());
 
 
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            int rowCount = ps.executeUpdate();
+            if (rowCount==1){
                 return true;
             }
         }

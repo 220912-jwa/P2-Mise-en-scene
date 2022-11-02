@@ -51,8 +51,8 @@ function addMovieToTable(libraryEntry){
     userComments.innerHTML=`<input type="text" id="${thisEntry}_userComments" value="${libraryEntry.userComments}" "></input>`;
     //all user inputs will need functions to edit, 
     
-    saveChanges.innerHTML = `<button type="button" id="${thisEntry}_save" text="Save" onclick="updateMovie(thisEntry)">Save</button>`;
-    deleteEntry.innerHTML = `<button type="button" id="${thisEntry}_delete" text="Remove" onclick="deleteEntry(thisEntry)">Remove</button>`;
+    saveChanges.innerHTML = `<button type="button" id="${thisEntry}_save" text="Save" onclick="updateMovie(${thisEntry})">Save</button>`;
+    deleteEntry.innerHTML = `<button type="button" id="${thisEntry}_delete" text="Remove" onclick="deleteEntry(${thisEntry})">Remove</button>`;
     newRow.append(title,releaseYear,imdbRating,watched,favorite,userRating,userComments,saveChanges,deleteEntry);
     table.append(newRow); 
 }
@@ -105,8 +105,8 @@ async function deleteEntry(movieID){
        
         userID: userID,
         movieID: movieID,
-        userComments: document.getElementById(`${movieID}_userComments`).value,
-        userRating: document.getElementById(`${movieID}_userRating`).value,
+        userComments: document.getElementById(`'${movieID}'_userComments`).value,
+        userRating: document.getElementById(`'${movieID}'_userRating`).value,
         isFavorite: favorited,
         hasWatched: watched
     }
@@ -125,18 +125,22 @@ async function deleteEntry(movieID){
     }
 }
 async function updateMovie(movieID){
-    if(document.getElementById(`${movieID}_isFavorite`).checked){
+    //faveID = `${movieID}_isFavorite`;
+    //favorited = document.querySelector('`${movieID}_isFavorite`').checked;
+    if(document.getElementById(`'${movieID}'_isFavorite`).checked){
         favorited = 'true';
     }else{favorited = 'false'}
-    if(document.getElementById(`${movieID}_isWatched`).checked){
+    //var isFavorite = document.getElementById(`${movieID}_isFavorite`)
+    //favorited = isFavorite.checked;
+    if(document.getElementById(`'${movieID}'_isWatched`).checked){
         watched = 'true';
     }else{watched = 'false'}
     let libraryEntryUpdate = {
        
         userID: userID,
-        movieID: movieID,
-        userComments: document.getElementById(`${movieID}_userComments`).value,
-        userRating: document.getElementById(`${movieID}_userRating`).value,
+        movieID: "'"+movieID+"'",
+        userComments: document.getElementById(`'${movieID}'_userComments`).value,
+        userRating: document.getElementById(`'${movieID}'_userRating`).value,
         isFavorite: favorited,
         hasWatched: watched
     }
@@ -151,8 +155,6 @@ async function updateMovie(movieID){
     }
     );
     if (res.status === 204) {
-        let resBody = await res.json();
-        console.log(resBody);
         alert("Movie Status Updated Successfully!");}
 }
 

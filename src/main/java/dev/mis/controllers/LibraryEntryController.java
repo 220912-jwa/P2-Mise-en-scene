@@ -13,7 +13,6 @@ public class LibraryEntryController {
         LibraryEntry libraryEntry = ctx.bodyAsClass(LibraryEntry.class);
         LibraryEntry newEntry = ls.createLibraryEntry(libraryEntry);
         ctx.status(HttpCode.CREATED);
-        ctx.json(newEntry);
     }
     public void getLibraryForUser(Context ctx){
         int userID = Integer.parseInt(ctx.pathParam("user_id"));
