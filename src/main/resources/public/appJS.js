@@ -56,8 +56,48 @@ function addMovieToTable(libraryEntry){
     newRow.append(title,releaseYear,imdbRating,watched,favorite,userRating,userComments,saveChanges,deleteEntry);
     table.append(newRow); 
 }
-function addMovie(){
+async function addMovie(){
     //collects info from movie fields on add.html and posts to server
+
+    // Adds the movie to the movie table for the application
+    let IMDbId = document.getElementById("searchOMDB").value;
+    IMDbId = "tt" + String(IMDbId);
+    
+    // Get the built movie from application database
+    let userMovie;
+    res = await fetch(`${baseURL}/movies/${IMDbId}`);
+    if(res.status === 200){
+        userMovie = await res.json();
+        console.log(userMovie);
+    }
+
+    //let userEntry = JSON.parseString(userMovie);
+    let userLibEntry = {
+
+        userID: userID,
+        movieID: userMovie.movieID,
+        userComments: "",
+        userRating: 0,
+        isFavorite: false,
+        hasWatched: false
+    }
+    console.log(userLibEntry);
+    let userLibEntryJSON = JSON.stringify(userLibEntry);
+    // Add the movie to the user library
+    res = await fetch(`${baseURL}/${userID}/library`,
+    {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: userLibEntryJSON
+    });
+    if(res.status === 201){
+        document.location.assign("/library.html");
+    }
+    if(res.status === 500){
+        // This is not desired behavior
+        document.location.assign("/library.html");
+    }
+
 }
 async function deleteEntry(movieID){
     //currently, LibraryEntryDAO wants a whole object, not movieID
@@ -78,8 +118,11 @@ async function deleteEntry(movieID){
         method: "DELETE",
         headers: {"Content-Type": "application/json"},
         body: libraryEntryJSON
+    });
+    if(res.status === 200){
+        let resBody = await res.json();
+        console.log(resBody)
     }
-    );
 }
 async function updateMovie(movieID){
     if(document.getElementById(`${movieID}_isFavorite`).checked){
