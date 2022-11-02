@@ -8,6 +8,7 @@ username varchar(20) unique not null,
 pass varchar(20),
 user_code varchar unique not null
 );
+insert into mis.users values(default, 'griffy','hunter2','sdfghj')
 
 
 

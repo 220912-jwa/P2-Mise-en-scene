@@ -10,13 +10,13 @@
     <div id="registerRootDiv">
         <fieldset id="genericFieldset">
             <h1>Create Account</h1>
-            <label for="newUserName" class="goldBoldFont">choose a username</label>
-            <input id="newUserName" type="text" placeholder="your username" required>
+            <label for="userName" class="goldBoldFont">choose a username</label>
+            <input id="userName" type="text" placeholder="your username" required>
             <br /><br />
-            <label for="newUserPass" class="goldBoldFont">choose a password</label>
-            <input id="newUserPass" type="text" placeholder="your password" required>
+            <label for="userPass" class="goldBoldFont">choose a password</label>
+            <input id="userPass" type="text" placeholder="your password" required>
             <br /><br />
-            <button id="newUserRegisterButton" type="button" class="allButtons">register</button>
+            <button id="newUserRegisterButton" onclick="Registration()" type="button" class="allButtons">register</button>
             <br /><br />
         </fieldset>
     </div>
@@ -25,8 +25,8 @@ let baseURL = "http://localhost:8080";
 
 async function Registration(){
 
-    name = document.getElementById('newUserName').value;
-    pass = document.getElementById('newUserPass').value;
+    name = document.getElementById('userName').value;
+    pass = document.getElementById('userPass').value;
 
     let registrationCredentials = {
         newUserName: name,
