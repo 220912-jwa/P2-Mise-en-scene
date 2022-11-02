@@ -46,6 +46,12 @@ public class UserController {
             ctx.json(user);
         }
     }
+    public void createUser(Context ctx){
+        User newUser = ctx.bodyAsClass(User.class);
+        userService.createUser(newUser);
+        ctx.status(HttpCode.CREATED);
+        ctx.json(newUser);
+    }
     public void updateUser(Context ctx) {
         User toBeUpdated = ctx.bodyAsClass(User.class);
         userService.updateUser(toBeUpdated);

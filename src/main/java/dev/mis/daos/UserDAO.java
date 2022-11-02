@@ -14,13 +14,11 @@ public class UserDAO {
         // needs to use ID-less constructor, and setID afterwards
         // also needs to generate a user code
         try(Connection conn = ConnectionUtil.createConnection()){
-            String sql = "insert into mis.users values (?, ?, ?, ?)";
+            String sql = "insert into mis.users values (default, ?, ?, ?)";
             PreparedStatement ps =conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1,user.getUserID());
-
-            ps.setString(2,user.getUsername());
-            ps.setString(3,user.getPass());
-            ps.setString(4,user.getUserCode());
+            ps.setString(1,user.getUsername());
+            ps.setString(2,user.getPass());
+            ps.setString(3,user.getUserCode());
             ps.execute();
             ResultSet rs = ps.getGeneratedKeys();
             if(rs.next()){
